@@ -382,7 +382,7 @@
 			isa = PBXGroup;
 			children = (
 				76C5115B1BEC6F8F0095F510 /* Lyrics */,
-				76D060431C02B8D8000DA86C /* LyricsX Helper */,
+				76D060431C02B8D8000DA86C /* LyricsVox Helper */,
 				764B0A801C30D0F00048419B /* Build-In Apps */,
 				76C5115A1BEC6F8F0095F510 /* Products */,
 			);
@@ -413,7 +413,7 @@
 			path = Lyrics;
 			sourceTree = "<group>";
 		};
-		76D060431C02B8D8000DA86C /* LyricsX Helper */ = {
+		76D060431C02B8D8000DA86C /* LyricsVox Helper */ = {
 			isa = PBXGroup;
 			children = (
 				76D060441C02B8D8000DA86C /* AppDelegate.swift */,
@@ -425,6 +425,7 @@
 				76D060481C02B8D9000DA86C /* MainMenu.xib */,
 				76D0604B1C02B8D9000DA86C /* Info.plist */,
 			);
+			name = "LyricsVox Helper";
 			path = "LyricsX Helper";
 			sourceTree = "<group>";
 		};

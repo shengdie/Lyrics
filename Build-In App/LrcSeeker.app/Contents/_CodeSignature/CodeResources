@@ -6,21 +6,12 @@
 	<dict>
 		<key>Resources/AppIcon.icns</key>
 		<data>
-		AA05OP3iEqD3+zr5jUclldC3hfY=
+		8aat+nG3EiFWT7sx+xDhivTHdco=
 		</data>
 		<key>Resources/Assets.car</key>
 		<data>
-		pF/CuXTcfckKYUh1f58kH5tDB0Y=
+		xv2u5PUdrIUrA6Nv5Mn3ikDxn1M=
 		</data>
-		<key>Resources/Base.lproj/ArtworkFiller.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			RnP7rXhPOCEL9nrYDVTuJp6gRho=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
 		<key>Resources/Base.lproj/HUDPreview.nib</key>
 		<dict>
 			<key>hash</key>
@@ -34,7 +25,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			RakyEJKxfxGgSMJuGok2JUxVU6g=
+			iUjVeOf/2rJPwATwt5HZKawKSgI=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -43,7 +34,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			4dODos2G+9o7yncisM6O8q/s0yM=
+			b/49Yhn+mvg25ZHBYq/jO1PKEYU=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -52,7 +43,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ETUfDuN/5rKc9YB7n6z4DtRPu+U=
+			gZsT2EdQ7yfRU7hjuZT65A5wsME=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -129,15 +120,6 @@
 		<data>
 		/Kzb3720xeWAm78nrKeH4K5B4RY=
 		</data>
-		<key>Resources/zh-Hans.lproj/ArtworkFiller.strings</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			zq0QInhRYkloMfqD7BUX11XC66s=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
 		<key>Resources/zh-Hans.lproj/HUDPreview.strings</key>
 		<dict>
 			<key>hash</key>
@@ -151,7 +133,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Z5IBlhrbDBMKsdpIEJH7LV9c2OY=
+			f8Mb4ys1V1nexMvlW4b7UFLjQ48=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -160,7 +142,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			PY2E/1+NMc0QVHukTW2aEoPHC6w=
+			nwGNSj3lFwKAtr6bUM4O5Tl+c70=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -169,16 +151,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			1YSNerLH97o1bC1lUm1adjWyous=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Resources/zh-Hant.lproj/ArtworkFiller.strings</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			5ncLY6RSJAGwzXojek4D89LPWPc=
+			6t+k2kMDFAOpTmR1VhDF49EqVfI=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -196,7 +169,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			W8mfTv9SF954sN5FRjq35ZOJMAY=
+			ZllNjPab7fLUn0mQuE0RYKIhhug=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -205,7 +178,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			VlVHNVyFh12Ett4qlt/0F3on7Yo=
+			zwgg8u1950t1fcMzkkdnOjElfiU=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -214,7 +187,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Bb5nIFgp+WUyc8gzxykGuMwbkcg=
+			YQYscb5VvArQnLoZHsROrDW0RME=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -305,21 +278,12 @@
 		</dict>
 		<key>Resources/AppIcon.icns</key>
 		<data>
-		AA05OP3iEqD3+zr5jUclldC3hfY=
+		8aat+nG3EiFWT7sx+xDhivTHdco=
 		</data>
 		<key>Resources/Assets.car</key>
 		<data>
-		pF/CuXTcfckKYUh1f58kH5tDB0Y=
+		xv2u5PUdrIUrA6Nv5Mn3ikDxn1M=
 		</data>
-		<key>Resources/Base.lproj/ArtworkFiller.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			RnP7rXhPOCEL9nrYDVTuJp6gRho=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
 		<key>Resources/Base.lproj/HUDPreview.nib</key>
 		<dict>
 			<key>hash</key>
@@ -333,7 +297,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			RakyEJKxfxGgSMJuGok2JUxVU6g=
+			iUjVeOf/2rJPwATwt5HZKawKSgI=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -342,7 +306,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			4dODos2G+9o7yncisM6O8q/s0yM=
+			b/49Yhn+mvg25ZHBYq/jO1PKEYU=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -351,7 +315,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ETUfDuN/5rKc9YB7n6z4DtRPu+U=
+			gZsT2EdQ7yfRU7hjuZT65A5wsME=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -433,15 +397,6 @@
 		<data>
 		/Kzb3720xeWAm78nrKeH4K5B4RY=
 		</data>
-		<key>Resources/zh-Hans.lproj/ArtworkFiller.strings</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			zq0QInhRYkloMfqD7BUX11XC66s=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
 		<key>Resources/zh-Hans.lproj/HUDPreview.strings</key>
 		<dict>
 			<key>hash</key>
@@ -455,7 +410,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Z5IBlhrbDBMKsdpIEJH7LV9c2OY=
+			f8Mb4ys1V1nexMvlW4b7UFLjQ48=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -464,7 +419,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			PY2E/1+NMc0QVHukTW2aEoPHC6w=
+			nwGNSj3lFwKAtr6bUM4O5Tl+c70=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -473,16 +428,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			1YSNerLH97o1bC1lUm1adjWyous=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Resources/zh-Hant.lproj/ArtworkFiller.strings</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			5ncLY6RSJAGwzXojek4D89LPWPc=
+			6t+k2kMDFAOpTmR1VhDF49EqVfI=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -500,7 +446,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			W8mfTv9SF954sN5FRjq35ZOJMAY=
+			ZllNjPab7fLUn0mQuE0RYKIhhug=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -509,7 +455,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			VlVHNVyFh12Ett4qlt/0F3on7Yo=
+			zwgg8u1950t1fcMzkkdnOjElfiU=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -518,7 +464,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Bb5nIFgp+WUyc8gzxykGuMwbkcg=
+			YQYscb5VvArQnLoZHsROrDW0RME=
 			</data>
 			<key>optional</key>
 			<true/>

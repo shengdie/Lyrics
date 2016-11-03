@@ -431,7 +431,7 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
         NSApp.activate(ignoringOtherApps: true)
     }
     
-    @IBAction func importLrcFile(_ sender: AnyObject) {
+    @IBAction func importLrcFile(_ sender: AnyObject) { // 从本地导入歌词
         let songTitle: String = currentSongTitle
         let artist: String = currentArtist
         let songID: String = currentSongID
@@ -471,7 +471,7 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
         }
     }
     
-    @IBAction func exportLrcFile(_ sender: AnyObject) {
+    @IBAction func exportLrcFile(_ sender: AnyObject) { //导出歌词到本地
         let savingPath: String
         if userDefaults.integer(forKey: LyricsSavingPathPopUpIndex) == 0 {
             savingPath = NSSearchPathForDirectoriesInDomains(.musicDirectory, [.userDomainMask], true).first! + "/LyricsX"
@@ -770,7 +770,7 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
         lrcParser.cleanCache()
     }
 
-    fileprivate func saveLrcToLocal (_ lyricsContents: String, songTitle: String, artist: String) {
+    fileprivate func saveLrcToLocal (_ lyricsContents: String, songTitle: String, artist: String) { // 将lrc保存到本地
         let savingPath: String
         if userDefaults.integer(forKey: LyricsSavingPathPopUpIndex) == 0 {
             savingPath = NSSearchPathForDirectoriesInDomains(.musicDirectory, [.userDomainMask], true).first! + "/LyricsX"
@@ -822,10 +822,21 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
         let songTitle: String = theTitle.replacingOccurrences(of: "/", with: "&")
         let artist: String = theArtist.replacingOccurrences(of: "/", with: "&")
         let lrcFilePath = (savingPath as NSString).appendingPathComponent("\(songTitle) - \(artist).lrc")
+        let lrcFilePathLocal = (savingPath as NSString).appendingPathComponent("\(songTitle).lrc")
         if  FileManager.default.fileExists(atPath: lrcFilePath) {
             let lrcContents: String?
             do {
                 lrcContents = try String(contentsOfFile: lrcFilePath, encoding: String.Encoding.utf8)
+            } catch {
+                lrcContents = nil
+                NSLog("Failed to load lrc")
+            }
+            return lrcContents
+        }
+        else if FileManager.default.fileExists(atPath: lrcFilePathLocal) {
+            let lrcContents: String?
+            do {
+                lrcContents = try String(contentsOfFile: lrcFilePathLocal, encoding: String.Encoding.utf8)
             } catch {
                 lrcContents = nil
                 NSLog("Failed to load lrc")

@@ -384,7 +384,7 @@ class DesktopLyricsController: NSWindowController, NSWindowDelegate {
             secondLyricsLayer.isHidden = true
             backgroundLayer.isHidden = true
             
-            backgroundLayer.transform = CATransform3DMakeRotation(CGFloat(-M_PI_2), 0, 0, 1)
+            backgroundLayer.transform = CATransform3DMakeRotation(CGFloat(-Double.pi/2), 0, 0, 1)
             isRotated = true
         }
         else if secondLyrics == nil || secondLyrics == "" {
@@ -438,7 +438,7 @@ class DesktopLyricsController: NSWindowController, NSWindowDelegate {
             backgroundLayer.frame = CGRect(x: x, y: y, width: frameSize.width, height: frameSize.height*1.15+bgHeightIncreasement)
             firstLyricsLayer.frame = CGRect(x: 0, y: -frameSize.height*0.15+yOffset, width: frameSize.width, height: frameSize.height*1.08+lyricsHeightIncreasement)
             firstLyricsLayer.string=attributedStr
-            backgroundLayer.transform = CATransform3DMakeRotation(CGFloat(-M_PI_2), 0, 0, 1)
+            backgroundLayer.transform = CATransform3DMakeRotation(CGFloat(-Double.pi/2), 0, 0, 1)
             isRotated = true
         }
         else {
@@ -509,7 +509,7 @@ class DesktopLyricsController: NSWindowController, NSWindowDelegate {
             }
             
             backgroundLayer.frame = CGRect(x: x, y: y, width: width, height: height*1.15)
-            backgroundLayer.transform = CATransform3DMakeRotation(CGFloat(-M_PI_2), 0, 0, 1)
+            backgroundLayer.transform = CATransform3DMakeRotation(CGFloat(-Double.pi/2), 0, 0, 1)
             isRotated = true
             
             // whether needs rolling-over to show animation

@@ -10,46 +10,54 @@ import Cocoa
 
 class LyricsLineModel: NSObject {
     
-    var lyricsSentence:NSString!
+    var lyricsSentence: String
+    var enabled: Bool
     
-    private(set) var msecPosition:Int!
+    fileprivate(set) var msecPosition: Int
+    fileprivate(set) var timeTag: String
     
-    private(set) var timeTag:NSString!
+    override init() {
+        lyricsSentence = String()
+        enabled = true
+        msecPosition = 0
+        timeTag = "[00:00.000]"
+        super.init()
+    }
     
-    func setMsecPositionWithTimeTag (theTimeTag: NSString) {
-        self.timeTag=theTimeTag
-        let colonRange:NSRange = theTimeTag.rangeOfString(":")
-        let minuteStr:NSString = theTimeTag.substringWithRange(NSMakeRange(1, colonRange.location-1))
-        let secondStr:NSString = theTimeTag.substringWithRange(NSMakeRange(colonRange.location+1, theTimeTag.length-colonRange.length-colonRange.location-1))
-        let minute:Int = minuteStr.integerValue
-        let second:Float = secondStr.floatValue
+    func setMsecPositionWithTimeTag (_ theTimeTag: NSString) {
+        self.timeTag = theTimeTag as String
+        let colonRange: NSRange = theTimeTag.range(of: ":")
+        let minuteStr: NSString = theTimeTag.substring(with: NSMakeRange(1, colonRange.location-1)) as NSString
+        let secondStr: NSString = theTimeTag.substring(with: NSMakeRange(colonRange.location+1, theTimeTag.length-colonRange.length-colonRange.location-1)) as NSString
+        let minute: Int = minuteStr.integerValue
+        let second: Float = secondStr.floatValue
         self.msecPosition = Int((Float(minute)*60+second)*1000)
     }
     
-    func setTimeTagWithMsecPosition (theMsecPosition: Int) {
-        let minute:Int = theMsecPosition/(60*1000)
-        let second:Int = (theMsecPosition-minute*60*1000)/1000
-        let mSecond:Int = theMsecPosition-(minute*60+second)*1000
-        var theTimeTag:String = String()
+    func setTimeTagWithMsecPosition (_ theMsecPosition: Int) {
+        let minute: Int = theMsecPosition/(60*1000)
+        let second: Int = (theMsecPosition-minute*60*1000)/1000
+        let mSecond: Int = theMsecPosition-(minute*60+second)*1000
+        var theTimeTag: String = String()
         
         if minute < 10 {
-            theTimeTag += "[0\(minute):"
+            theTimeTag.append("[0\(minute):")
         } else {
-            theTimeTag += "[\(minute):"
+            theTimeTag.append("[\(minute):")
         }
         
         if second < 10 {
-            theTimeTag += "0\(second)."
+            theTimeTag.append("0\(second).")
         } else {
-            theTimeTag += "\(second)."
+            theTimeTag.append("\(second).")
         }
         
         if mSecond > 99 {
-            theTimeTag += "\(mSecond)]"
+            theTimeTag.append("\(mSecond)]")
         } else if mSecond > 9 {
-            theTimeTag += "0\(mSecond)]"
+            theTimeTag.append("0\(mSecond)]")
         } else {
-            theTimeTag += "00\(mSecond)]"
+            theTimeTag.append("00\(mSecond)]")
         }
         self.timeTag = theTimeTag
     }

@@ -10,19 +10,19 @@ import Cocoa
 
 class TextPreview: NSView {
     
-    private var attributes: [String:AnyObject]
-    private var backgroundColor: NSColor
-    private var image: NSImage
-    private var bkLayer: CALayer!
-    private var textLayer: CATextLayer!
-    private var textYOffset: CGFloat!
-    private var bgHeightIncreasement: CGFloat!
-    private var lyricsHeightIncreasement: CGFloat!
-    private let stringValue: String = NSLocalizedString("PREVIEW_TEXT", comment: "")
+    fileprivate var attributes: [String:AnyObject]
+    fileprivate var backgroundColor: NSColor
+    fileprivate var image: NSImage
+    fileprivate var bkLayer: CALayer!
+    fileprivate var textLayer: CATextLayer!
+    fileprivate var textYOffset: CGFloat!
+    fileprivate var bgHeightIncreasement: CGFloat!
+    fileprivate var lyricsHeightIncreasement: CGFloat!
+    fileprivate let stringValue: String = NSLocalizedString("PREVIEW_TEXT", comment: "")
 
     required init?(coder: NSCoder) {
         attributes = [String:AnyObject]()
-        backgroundColor = NSColor.blackColor()
+        backgroundColor = NSColor.black
         image = NSImage(named: "preview_bkground")!
         super.init(coder: coder)
         
@@ -45,34 +45,9 @@ class TextPreview: NSView {
         textLayer.position = NSZeroPoint
         textLayer.alignmentMode = kCAAlignmentCenter
         bkLayer.addSublayer(textLayer)
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "viewChanged:", name: "PrefsViewChanged", object: nil)
     }
     
-    deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-    }
-    
-    // Layers don't fade out, so we have to do it selves.
-    func viewChanged(n: NSNotification) {
-        let userInfo = n.userInfo as! [String:AnyObject]
-        let fontAndColorPrefs: String = NSLocalizedString("FONT_COLOR", comment: "")
-        if userInfo["OldViewName"] as! String == fontAndColorPrefs {
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.layer?.hidden = true
-                self.bkLayer.hidden = true
-                self.textLayer.hidden = true
-            })
-        } else if userInfo["NewViewName"] as! String == fontAndColorPrefs {
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.layer?.hidden = false
-                self.bkLayer.hidden = false
-                self.textLayer.hidden = false
-            })
-        }
-    }
-    
-    func setAttributs(font:NSFont, textColor:NSColor, bkColor:NSColor, heightInrc:Float, enableShadow:Bool, shadowColor:NSColor, shadowRadius:Float, yOffset:Float) {
+    func setAttributs(_ font:NSFont, textColor:NSColor, bkColor:NSColor, heightInrc:Float, enableShadow:Bool, shadowColor:NSColor, shadowRadius:Float, yOffset:Float) {
         backgroundColor = bkColor
         attributes.removeAll()
         attributes[NSForegroundColorAttributeName] = textColor
@@ -85,7 +60,7 @@ class TextPreview: NSView {
         }
         textYOffset = CGFloat(yOffset)
         if enableShadow {
-            textLayer.shadowColor = shadowColor.CGColor
+            textLayer.shadowColor = shadowColor.cgColor
             textLayer.shadowRadius = CGFloat(shadowRadius)
             textLayer.shadowOffset = NSZeroSize
             textLayer.shadowOpacity = 1
@@ -95,12 +70,12 @@ class TextPreview: NSView {
         drawContents()
     }
     
-    private func drawContents() {
+    fileprivate func drawContents() {
         let viewSize = self.bounds.size
         let attrString: NSAttributedString = NSAttributedString(string: stringValue, attributes: attributes)
         var strSize: NSSize = attrString.size()
         strSize.width += 50
-        bkLayer.backgroundColor = backgroundColor.CGColor
+        bkLayer.backgroundColor = backgroundColor.cgColor
         bkLayer.frame.size = NSMakeSize(strSize.width, strSize.height+bgHeightIncreasement)
         bkLayer.frame.origin = NSMakePoint((viewSize.width-strSize.width)/2, (viewSize.height-strSize.height)/2)
         

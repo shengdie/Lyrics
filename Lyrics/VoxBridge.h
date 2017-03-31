@@ -2,8 +2,8 @@
 //  VoxBridge.h
 //  Lyrics
 //
-//  Created by Eru on 15/12/31.
-//  Copyright © 2015年 Eru. All rights reserved.
+//  Created by xinmm on 3/31/17.
+//  Copyright © 2017 Eru. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -15,7 +15,11 @@
 
 -(NSString *) currentTitle;
 -(NSString *) currentArtist;
+-(NSString *) currentAlbum;
 -(NSString *) currentPersistentID;
 -(NSInteger) playerPosition;
+//-(NSData *) artwork;
+-(void) play;
+-(void) pause;
 
 @end

@@ -1,41 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="AppPrefsWindowController" customModule="LyricsVox" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="AppPrefsWindowController" customModule="LyricsX" customModuleProvider="target">
             <connections>
                 <outlet property="applyButton" destination="2MS-Zm-Upl" id="BJn-wE-rb3"/>
                 <outlet property="bkColor" destination="EW0-Bd-p9N" id="fph-28-bHi"/>
+                <outlet property="conditionalFilterList" destination="q3C-Ye-vOl" id="xMh-Az-JoF"/>
                 <outlet property="copyLrcToPbShortcut" destination="hlc-is-WV9" id="gcA-Rv-gdq"/>
                 <outlet property="desktopMenubarSwitchShortcut" destination="Bxn-kf-FeY" id="iar-I4-ZY1"/>
-                <outlet property="donateView" destination="162-Ff-cWD" id="jzk-Ll-KB5"/>
+                <outlet property="dialog" destination="iu5-wj-vE1" id="4JO-Pw-5KZ"/>
+                <outlet property="directFilterList" destination="iOq-Po-ONP" id="MEq-di-ab2"/>
                 <outlet property="editLrcShortcut" destination="paS-fO-cn5" id="fsu-14-fBK"/>
+                <outlet property="filterPrefsView" destination="br6-UQ-beu" id="Ixv-Be-A7h"/>
                 <outlet property="fontAndColorPrefsView" destination="57y-D4-ovD" id="9r1-x0-jZ6"/>
                 <outlet property="fontDisplayText" destination="0FF-WL-2dH" id="aqe-Ki-ifH"/>
                 <outlet property="generalPrefsView" destination="hzc-UQ-83r" id="gn9-FJ-f9h"/>
+                <outlet property="helpPopover" destination="ogp-WF-MQM" id="npp-Ig-rP0"/>
                 <outlet property="lrcSeekerShortcut" destination="dy6-ep-Gan" id="kFw-jY-zHC"/>
                 <outlet property="lyricsModeSwitchShortcut" destination="Xic-BL-Y5L" id="xTf-yp-hBx"/>
                 <outlet property="lyricsPrefsView" destination="5BK-8u-tNV" id="0r6-Ag-2Fa"/>
                 <outlet property="makeLrcShortcut" destination="qKj-Pg-4Lu" id="FaU-Ch-QCn"/>
+                <outlet property="offsetDecrShortcut" destination="Kkb-87-uoI" id="fKt-a1-6hl"/>
+                <outlet property="offsetIncrShortcut" destination="Nzq-iL-PvG" id="6ff-jh-dyR"/>
+                <outlet property="presetListView" destination="mPZ-v6-VNT" id="qri-AB-m8g"/>
+                <outlet property="presetNameTF" destination="Vlf-dX-cGS" id="n8B-LA-2DE"/>
+                <outlet property="presetPrefsView" destination="TtF-ul-wFD" id="1SX-H2-gZe"/>
                 <outlet property="revertButton" destination="lBX-iN-a5e" id="4jc-qV-XKa"/>
                 <outlet property="savingPathPopUp" destination="zr6-Uo-3Au" id="e5E-dm-H7H"/>
                 <outlet property="shadowColor" destination="0vG-ps-ld4" id="YUl-nh-JWn"/>
                 <outlet property="shortcutPrefsView" destination="OaX-cK-ajI" id="jPA-xk-zy5"/>
+                <outlet property="tableMenu" destination="A8e-2W-qhd" id="dRh-KG-YZV"/>
                 <outlet property="textColor" destination="Bkr-05-QrQ" id="Edz-dd-qeK"/>
                 <outlet property="textPreview" destination="FdQ-wS-kv6" id="0UG-0D-gZw"/>
+                <outlet property="writeLrcToiTunesShortcut" destination="s4g-17-rwP" id="4dp-N9-Z49"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="hzc-UQ-83r" userLabel="General Prefs View" customClass="ClickView" customModule="LyricsVox" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="376" height="283"/>
+        <customView id="hzc-UQ-83r" userLabel="General Prefs View" customClass="ClickView" customModule="LyricsX" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="376" height="197"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <popUpButton verticalHuggingPriority="750" id="zr6-Uo-3Au">
-                    <rect key="frame" x="181" y="239" width="148" height="26"/>
+                    <rect key="frame" x="181" y="153" width="148" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="fWl-Xe-miF">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -61,7 +73,7 @@
                     </connections>
                 </popUpButton>
                 <button id="KNE-hz-sb3">
-                    <rect key="frame" x="340" y="243" width="16" height="16"/>
+                    <rect key="frame" x="340" y="157" width="16" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="openDir_icon" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="jsI-Sz-XAb">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -72,7 +84,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="jJf-SX-8uR">
-                    <rect key="frame" x="18" y="242" width="149" height="17"/>
+                    <rect key="frame" x="18" y="156" width="149" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Lrc files download path:" id="hr6-dW-Nap">
                         <font key="font" metaFont="system"/>
@@ -81,242 +93,23 @@
                     </textFieldCell>
                 </textField>
                 <button id="70D-Cz-LtQ">
-                    <rect key="frame" x="18" y="154" width="102" height="18"/>
+                    <rect key="frame" x="18" y="68" width="120" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Quit with Vox" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="HlU-FW-E5p">
+                    <buttonCell key="cell" type="check" title="Quit with iTunes" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="HlU-FW-E5p">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <binding destination="UKb-ML-D6F" name="value" keyPath="values.LyricsQuitWithVox" id="3dY-fo-2er">
+                        <binding destination="UKb-ML-D6F" name="value" keyPath="values.LyricsQuitWithITunes" id="NmZ-Uh-DfU">
                             <dictionary key="options">
                                 <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
                                 <bool key="NSValidatesImmediately" value="YES"/>
-                            </dictionary>
-                        </binding>
-                    </connections>
-                </button>
-                <button id="Itb-Lx-q7k">
-                    <rect key="frame" x="18" y="90" width="270" height="34"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Use auto layout  with height from dock or border to lyrics:" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="4DC-rM-sB4">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="reflashLyrics:" target="-2" id="CoK-rl-F69"/>
-                        <binding destination="UKb-ML-D6F" name="value" keyPath="values.LyricsUseAutoLayout" id="uJr-0u-Hg2">
-                            <dictionary key="options">
-                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                <bool key="NSValidatesImmediately" value="YES"/>
-                            </dictionary>
-                        </binding>
-                    </connections>
-                </button>
-                <textField verticalHuggingPriority="750" id="5Sz-bb-rfm">
-                    <rect key="frame" x="37" y="21" width="52" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="HOw-SW-9xG">
-                        <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" lenient="YES" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" nilSymbol="nil" id="MVa-M9-Kp1"/>
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <connections>
-                        <action selector="reflashLyrics:" target="-2" id="lZG-Gt-xHs"/>
-                        <binding destination="UKb-ML-D6F" name="value" keyPath="values.LyricsConstToLeft" id="3zB-H9-w18">
-                            <dictionary key="options">
-                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                <bool key="NSValidatesImmediately" value="YES"/>
-                            </dictionary>
-                        </binding>
-                        <binding destination="UKb-ML-D6F" name="enabled" keyPath="values.LyricsUseAutoLayout" id="uW8-Nk-2WJ">
-                            <dictionary key="options">
-                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                            </dictionary>
-                        </binding>
-                        <outlet property="nextKeyView" destination="9lt-Gt-079" id="o3W-jY-ADB"/>
-                    </connections>
-                </textField>
-                <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" id="es0-AV-pP5">
-                    <rect key="frame" x="92" y="18" width="19" height="27"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="vND-dE-260"/>
-                    <connections>
-                        <action selector="reflashLyrics:" target="-2" id="Pq5-7o-TsU"/>
-                        <binding destination="UKb-ML-D6F" name="value" keyPath="values.LyricsConstToLeft" id="Ffa-R4-eDx">
-                            <dictionary key="options">
-                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                <bool key="NSValidatesImmediately" value="YES"/>
-                            </dictionary>
-                        </binding>
-                        <binding destination="UKb-ML-D6F" name="enabled" keyPath="values.LyricsUseAutoLayout" id="FuK-BO-oZ1">
-                            <dictionary key="options">
-                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                            </dictionary>
-                        </binding>
-                    </connections>
-                </stepper>
-                <textField verticalHuggingPriority="750" id="9lt-Gt-079">
-                    <rect key="frame" x="116" y="20" width="52" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="gUV-uH-W9Z">
-                        <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" lenient="YES" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" nilSymbol="nil" id="OJb-GG-Vdn"/>
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <connections>
-                        <action selector="reflashLyrics:" target="-2" id="fNT-OH-ZKh"/>
-                        <binding destination="UKb-ML-D6F" name="value" keyPath="values.LyricsConstToBottom" id="9uz-cN-HGO">
-                            <dictionary key="options">
-                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                <bool key="NSValidatesImmediately" value="YES"/>
-                            </dictionary>
-                        </binding>
-                        <binding destination="UKb-ML-D6F" name="enabled" keyPath="values.LyricsUseAutoLayout" id="ENO-oI-m6t">
-                            <dictionary key="options">
-                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                            </dictionary>
-                        </binding>
-                        <outlet property="nextKeyView" destination="x6a-Sz-CjN" id="kNB-2W-UbN"/>
-                    </connections>
-                </textField>
-                <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" id="DNF-46-LV7">
-                    <rect key="frame" x="171" y="17" width="19" height="27"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="UkZ-uf-4Yu"/>
-                    <connections>
-                        <action selector="reflashLyrics:" target="-2" id="ily-jC-eWK"/>
-                        <binding destination="UKb-ML-D6F" name="value" keyPath="values.LyricsConstToBottom" id="s1g-dU-mWP">
-                            <dictionary key="options">
-                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                <bool key="NSValidatesImmediately" value="YES"/>
-                            </dictionary>
-                        </binding>
-                        <binding destination="UKb-ML-D6F" name="enabled" keyPath="values.LyricsUseAutoLayout" id="nY6-bt-ozF">
-                            <dictionary key="options">
-                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                            </dictionary>
-                        </binding>
-                    </connections>
-                </stepper>
-                <textField verticalHuggingPriority="750" id="x6a-Sz-CjN">
-                    <rect key="frame" x="196" y="20" width="52" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="BnQ-Iv-2KO">
-                        <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" lenient="YES" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" nilSymbol="nil" id="89J-10-f2w"/>
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <connections>
-                        <action selector="reflashLyrics:" target="-2" id="eXE-U5-Ysv"/>
-                        <binding destination="UKb-ML-D6F" name="value" keyPath="values.LyricsConstWidth" id="Vfa-kt-td7">
-                            <dictionary key="options">
-                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                <bool key="NSValidatesImmediately" value="YES"/>
-                            </dictionary>
-                        </binding>
-                        <binding destination="UKb-ML-D6F" name="enabled" keyPath="values.LyricsUseAutoLayout" id="w5f-Qj-Zf4">
-                            <dictionary key="options">
-                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                            </dictionary>
-                        </binding>
-                        <outlet property="nextKeyView" destination="Frb-GN-2NO" id="qmo-wV-tXq"/>
-                    </connections>
-                </textField>
-                <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" id="dLf-io-WlB">
-                    <rect key="frame" x="251" y="17" width="19" height="27"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="q6s-5O-VWm"/>
-                    <connections>
-                        <action selector="reflashLyrics:" target="-2" id="CXU-6g-9wR"/>
-                        <binding destination="UKb-ML-D6F" name="value" keyPath="values.LyricsConstWidth" id="LNZ-32-MwP">
-                            <dictionary key="options">
-                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                <bool key="NSValidatesImmediately" value="YES"/>
-                            </dictionary>
-                        </binding>
-                        <binding destination="UKb-ML-D6F" name="enabled" keyPath="values.LyricsUseAutoLayout" id="7tP-CI-6fe">
-                            <dictionary key="options">
-                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                            </dictionary>
-                        </binding>
-                    </connections>
-                </stepper>
-                <textField verticalHuggingPriority="750" id="Frb-GN-2NO">
-                    <rect key="frame" x="275" y="20" width="52" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Sk4-5k-fY7">
-                        <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" lenient="YES" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" nilSymbol="nil" id="dH3-EM-Dp5"/>
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <connections>
-                        <action selector="reflashLyrics:" target="-2" id="cxr-ii-QCM"/>
-                        <binding destination="UKb-ML-D6F" name="value" keyPath="values.LyricsConstHeight" id="u5H-QW-vId">
-                            <dictionary key="options">
-                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                <bool key="NSValidatesImmediately" value="YES"/>
-                            </dictionary>
-                        </binding>
-                        <binding destination="UKb-ML-D6F" name="enabled" keyPath="values.LyricsUseAutoLayout" id="tpv-WR-fU9">
-                            <dictionary key="options">
-                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                            </dictionary>
-                        </binding>
-                        <outlet property="nextKeyView" destination="5Sz-bb-rfm" id="vxw-GA-xdb"/>
-                    </connections>
-                </textField>
-                <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" id="grI-dN-iUd">
-                    <rect key="frame" x="330" y="17" width="19" height="27"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="oNH-qP-SNA"/>
-                    <connections>
-                        <action selector="reflashLyrics:" target="-2" id="ZbP-RZ-U9G"/>
-                        <binding destination="UKb-ML-D6F" name="value" keyPath="values.LyricsConstHeight" id="7z3-HS-44l">
-                            <dictionary key="options">
-                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                <bool key="NSValidatesImmediately" value="YES"/>
-                            </dictionary>
-                        </binding>
-                        <binding destination="UKb-ML-D6F" name="enabled" keyPath="values.LyricsUseAutoLayout" id="lkS-hL-ZVg">
-                            <dictionary key="options">
-                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                            </dictionary>
-                        </binding>
-                    </connections>
-                </stepper>
-                <button id="e8a-EN-4Dd">
-                    <rect key="frame" x="18" y="51" width="315" height="34"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Use const lyrics position and ignore other layout settings (Left, Bottom, Width, Height)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="eaR-Nu-hIQ">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="reflashLyrics:" target="-2" id="byF-68-zzT"/>
-                        <binding destination="UKb-ML-D6F" name="value" keyPath="values.LyricsUseAutoLayout" id="eO5-mh-vYI">
-                            <dictionary key="options">
-                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                <bool key="NSValidatesImmediately" value="YES"/>
-                                <string key="NSValueTransformerName">NSNegateBoolean</string>
                             </dictionary>
                         </binding>
                     </connections>
                 </button>
                 <popUpButton verticalHuggingPriority="750" id="DaO-06-BZN">
-                    <rect key="frame" x="181" y="177" width="148" height="26"/>
+                    <rect key="frame" x="181" y="91" width="148" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="Q9V-sw-d2o">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -324,7 +117,10 @@
                         <menu key="menu" id="bCO-9r-R0L">
                             <items>
                                 <menuItem title="User Login" id="aNq-Pa-I1J"/>
-                                <menuItem title="Vox Launched" id="kLu-hK-K4n"/>
+                                <menuItem title="iTunes Launched" id="kLu-hK-K4n"/>
+                                <menuItem title="iTunes Playing" id="F0g-b3-j9x">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                </menuItem>
                             </items>
                         </menu>
                     </popUpButtonCell>
@@ -343,7 +139,7 @@
                     </connections>
                 </popUpButton>
                 <button id="evm-fG-gkq">
-                    <rect key="frame" x="18" y="179" width="148" height="18"/>
+                    <rect key="frame" x="18" y="93" width="148" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Auto launches when:" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="qBk-yU-0Pr">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -360,7 +156,7 @@
                     </connections>
                 </button>
                 <button id="f0b-YX-plB">
-                    <rect key="frame" x="18" y="129" width="122" height="18"/>
+                    <rect key="frame" x="18" y="43" width="122" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Disable all alerts" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="POv-aj-bqw">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -376,7 +172,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="1gG-Hx-bkF">
-                    <rect key="frame" x="18" y="211" width="157" height="17"/>
+                    <rect key="frame" x="18" y="125" width="157" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Lrc searching use server:" id="zBt-4E-ez8">
                         <font key="font" metaFont="system"/>
@@ -384,8 +180,39 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <popUpButton verticalHuggingPriority="750" id="BUR-Wq-Y9R">
+                    <rect key="frame" x="181" y="122" width="148" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="p7x-Xe-7HW">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" id="NiO-T9-wG9">
+                            <items>
+                                <menuItem title="China Telecom" id="LtB-rL-F2Q"/>
+                                <menuItem title="China Unicom" id="l78-sd-Aem"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <binding destination="UKb-ML-D6F" name="selectedIndex" keyPath="values.LyricsServerIndex" id="f08-nH-tAo">
+                            <dictionary key="options">
+                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
+                                <bool key="NSValidatesImmediately" value="YES"/>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </popUpButton>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="J2K-wD-hbS">
+                    <rect key="frame" x="18" y="20" width="247" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Height from Dock to lyrics (Auto layout):" id="zLG-fb-UUX">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
                 <textField verticalHuggingPriority="750" id="fUX-O1-K7t">
-                    <rect key="frame" x="297" y="88" width="52" height="22"/>
+                    <rect key="frame" x="274" y="20" width="52" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="25" drawsBackground="YES" id="tFh-wU-dQE">
                         <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" lenient="YES" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="2000000000" nilSymbol="nil" id="Y1v-ie-gHp">
@@ -407,56 +234,18 @@
                         <binding destination="UKb-ML-D6F" name="enabled" keyPath="values.LyricsUseAutoLayout" id="cDL-hk-TLE"/>
                     </connections>
                 </textField>
-                <popUpButton verticalHuggingPriority="750" id="BUR-Wq-Y9R">
-                    <rect key="frame" x="181" y="208" width="148" height="26"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="p7x-Xe-7HW">
-                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="menu"/>
-                        <menu key="menu" id="NiO-T9-wG9">
-                            <items>
-                                <menuItem title="China Telecom" id="LtB-rL-F2Q"/>
-                                <menuItem title="China Unicom" id="l78-sd-Aem"/>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                    <connections>
-                        <binding destination="UKb-ML-D6F" name="selectedIndex" keyPath="values.LyricsServerIndex" id="f08-nH-tAo">
-                            <dictionary key="options">
-                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                <bool key="NSValidatesImmediately" value="YES"/>
-                            </dictionary>
-                        </binding>
-                    </connections>
-                </popUpButton>
             </subviews>
-            <point key="canvasLocation" x="-1142" y="237.5"/>
+            <point key="canvasLocation" x="-1142" y="194.5"/>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="UKb-ML-D6F"/>
         <customView id="5BK-8u-tNV" userLabel="Lyrics Prefs View">
-            <rect key="frame" x="0.0" y="0.0" width="360" height="256"/>
+            <rect key="frame" x="0.0" y="0.0" width="360" height="232"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <button id="cgR-6S-apL">
-                    <rect key="frame" x="18" y="59" width="268" height="34"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Disable lyrics when taking screen shot  (restart required)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="bbH-Zw-Uqf">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <binding destination="UKb-ML-D6F" name="value" keyPath="values.LyricsDisabledWhenSreenShot" id="ItX-fR-F1J">
-                            <dictionary key="options">
-                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                <bool key="NSValidatesImmediately" value="YES"/>
-                            </dictionary>
-                        </binding>
-                    </connections>
-                </button>
                 <button id="vBy-mM-hbr">
-                    <rect key="frame" x="18" y="126" width="249" height="18"/>
+                    <rect key="frame" x="18" y="102" width="266" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Disable lyrics when Vox is not playing" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="359-gu-dk7">
+                    <buttonCell key="cell" type="check" title="Disable lyrics when iTunes is not playing" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="359-gu-dk7">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -469,40 +258,8 @@
                         </binding>
                     </connections>
                 </button>
-                <button id="ulC-JT-Rx2">
-                    <rect key="frame" x="18" y="18" width="233" height="34"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Display lyrics in all desktop spaces (restart required)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="wf9-yP-uqA">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <binding destination="UKb-ML-D6F" name="value" keyPath="values.LyricsDisplayInAllSpaces" id="5tT-1z-uS1">
-                            <dictionary key="options">
-                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                <bool key="NSValidatesImmediately" value="YES"/>
-                            </dictionary>
-                        </binding>
-                    </connections>
-                </button>
-                <button id="OWN-3P-nqI">
-                    <rect key="frame" x="18" y="101" width="149" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Prefer bilingual lyrics" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="S6K-Eb-m9C">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <binding destination="UKb-ML-D6F" name="value" keyPath="values.LyricsSearchForDiglossiaLrc" id="urR-PM-bsa">
-                            <dictionary key="options">
-                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                <bool key="NSValidatesImmediately" value="YES"/>
-                            </dictionary>
-                        </binding>
-                    </connections>
-                </button>
                 <button id="x1B-W9-TCu">
-                    <rect key="frame" x="18" y="153" width="168" height="18"/>
+                    <rect key="frame" x="18" y="129" width="168" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Use 2nd Line to display:" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="1IO-BV-Yed">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -518,7 +275,7 @@
                     </connections>
                 </button>
                 <button id="0lJ-Y9-uvW">
-                    <rect key="frame" x="18" y="185" width="156" height="18"/>
+                    <rect key="frame" x="18" y="161" width="156" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Auto convert lyrics to:" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="lDH-nC-7tc">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -534,7 +291,7 @@
                     </connections>
                 </button>
                 <popUpButton verticalHuggingPriority="750" id="Knm-ZX-zb5">
-                    <rect key="frame" x="190" y="181" width="153" height="26"/>
+                    <rect key="frame" x="190" y="157" width="153" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" title="Traditional Chinese (Taiwan)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="oiR-vz-qK4" id="pf4-9N-YYu">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -560,7 +317,7 @@
                     </connections>
                 </popUpButton>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="d3u-O6-4NZ">
-                    <rect key="frame" x="18" y="216" width="109" height="17"/>
+                    <rect key="frame" x="18" y="192" width="109" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Vertical lyrics on:" id="5VN-ij-OTy">
                         <font key="font" metaFont="system"/>
@@ -569,7 +326,7 @@
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" id="r06-a3-FJi">
-                    <rect key="frame" x="190" y="213" width="153" height="26"/>
+                    <rect key="frame" x="190" y="189" width="153" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="xIx-Z8-Pdi">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -592,7 +349,7 @@
                     </connections>
                 </popUpButton>
                 <popUpButton verticalHuggingPriority="750" id="XcN-ij-vR0">
-                    <rect key="frame" x="190" y="150" width="153" height="26"/>
+                    <rect key="frame" x="190" y="126" width="153" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="Vyp-OI-iMU">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -618,10 +375,60 @@
                         </binding>
                     </connections>
                 </popUpButton>
+                <button id="ulC-JT-Rx2">
+                    <rect key="frame" x="18" y="18" width="224" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Lyrics can join all desktop spaces" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="wf9-yP-uqA">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="lyricsCanJoinAllDesktop:" target="-2" id="ahP-jU-td7"/>
+                        <binding destination="UKb-ML-D6F" name="value" keyPath="values.LyricsDisplayInAllSpaces" id="5tT-1z-uS1">
+                            <dictionary key="options">
+                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
+                                <bool key="NSValidatesImmediately" value="YES"/>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </button>
+                <button id="OWN-3P-nqI">
+                    <rect key="frame" x="18" y="74" width="149" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Prefer bilingual lyrics" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="S6K-Eb-m9C">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="UKb-ML-D6F" name="value" keyPath="values.LyricsSearchForDiglossiaLrc" id="urR-PM-bsa">
+                            <dictionary key="options">
+                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
+                                <bool key="NSValidatesImmediately" value="YES"/>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </button>
+                <button id="cgR-6S-apL">
+                    <rect key="frame" x="18" y="38" width="268" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Disable lyrics when taking screen shot" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="bbH-Zw-Uqf">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="disableLyricsWhenSnapshot:" target="-2" id="bty-EJ-Na7"/>
+                        <binding destination="UKb-ML-D6F" name="value" keyPath="values.LyricsDisabledWhenSreenShot" id="ItX-fR-F1J">
+                            <dictionary key="options">
+                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
+                                <bool key="NSValidatesImmediately" value="YES"/>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </button>
             </subviews>
-            <point key="canvasLocation" x="-648" y="250"/>
+            <point key="canvasLocation" x="-648" y="238"/>
         </customView>
-        <customView id="57y-D4-ovD" customClass="ClickView" customModule="LyricsVox" customModuleProvider="target">
+        <customView id="57y-D4-ovD" customClass="ClickView" customModule="LyricsX" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="408" height="336"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -651,7 +458,7 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <customView id="FdQ-wS-kv6" userLabel="Font Preview" customClass="TextPreview" customModule="LyricsVox" customModuleProvider="target">
+                <customView id="FdQ-wS-kv6" userLabel="Font Preview" customClass="TextPreview" customModule="LyricsX" customModuleProvider="target">
                     <rect key="frame" x="20" y="51" width="368" height="90"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
@@ -919,53 +726,29 @@
             <point key="canvasLocation" x="-175" y="264"/>
         </customView>
         <customView id="OaX-cK-ajI">
-            <rect key="frame" x="0.0" y="0.0" width="415" height="252"/>
+            <rect key="frame" x="0.0" y="0.0" width="415" height="279"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="xaB-p5-OLT">
-                    <rect key="frame" x="18" y="213" width="134" height="17"/>
+                    <rect key="frame" x="18" y="240" width="140" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1. Increase  lrc offset:" id="qok-bt-0Gp">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" size="13" name=".LucidaGrandeUI"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Ypx-q3-UNh">
-                    <rect key="frame" x="18" y="186" width="141" height="17"/>
+                    <rect key="frame" x="18" y="213" width="145" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="2. Decrease  lrc offset:" id="DDN-HF-zck">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="59B-DD-91Z">
-                    <rect key="frame" x="245" y="213" width="150" height="19"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="border" alignment="center" id="jmS-03-WwS">
                         <font key="font" size="13" name=".LucidaGrandeUI"/>
-                        <string key="title" base64-UTF8="YES">
-4oylEeKMmCs
-</string>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="WRu-VI-ZcO">
-                    <rect key="frame" x="245" y="186" width="150" height="19"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="border" alignment="center" id="5mR-Pb-q92">
-                        <font key="font" size="13" name=".LucidaGrandeUI"/>
-                        <string key="title" base64-UTF8="YES">
-4oylEeKMmC0
-</string>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="910-hO-gDx">
-                    <rect key="frame" x="18" y="157" width="218" height="17"/>
+                    <rect key="frame" x="18" y="184" width="218" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="3. Horizontal/Vertical mode switch:" id="ZCu-W5-ZZi">
                         <font key="font" metaFont="system"/>
@@ -974,7 +757,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="oYj-ag-Cg4">
-                    <rect key="frame" x="18" y="130" width="213" height="17"/>
+                    <rect key="frame" x="18" y="157" width="213" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="4. Desktop/MenuBar lyrics switch:" id="LaG-ye-jZk">
                         <font key="font" metaFont="system"/>
@@ -983,118 +766,606 @@
                     </textFieldCell>
                 </textField>
                 <customView id="Xic-BL-Y5L" customClass="MASShortcutView">
-                    <rect key="frame" x="245" y="157" width="150" height="19"/>
+                    <rect key="frame" x="245" y="184" width="150" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
                 <customView id="Bxn-kf-FeY" customClass="MASShortcutView">
-                    <rect key="frame" x="245" y="130" width="150" height="19"/>
+                    <rect key="frame" x="245" y="157" width="150" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
                 <customView id="dy6-ep-Gan" customClass="MASShortcutView">
-                    <rect key="frame" x="245" y="101" width="150" height="19"/>
+                    <rect key="frame" x="245" y="128" width="150" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="cbN-9k-lkd">
-                    <rect key="frame" x="18" y="101" width="160" height="17"/>
+                    <rect key="frame" x="18" y="128" width="160" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="3. Search lrc and artwork:" id="6Ya-Mh-Mlp">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="5. Search lrc and artwork:" id="6Ya-Mh-Mlp">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="4To-xZ-nch">
-                    <rect key="frame" x="18" y="74" width="179" height="17"/>
+                    <rect key="frame" x="18" y="101" width="179" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="4. Copy lyrics to pasteboard:" id="ffO-tr-Nli">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="6. Copy lyrics to pasteboard:" id="ffO-tr-Nli">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="O6a-jA-G2p">
-                    <rect key="frame" x="18" y="47" width="130" height="17"/>
+                    <rect key="frame" x="18" y="74" width="128" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="5. Edit current lyrics:" id="DJW-bt-ypq">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="7. Edit current lyrics:" id="DJW-bt-ypq">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="6yT-07-chy">
-                    <rect key="frame" x="18" y="20" width="74" height="17"/>
+                    <rect key="frame" x="18" y="47" width="75" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="6. Make lrc:" id="kVc-dv-fSe">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="8. Make lrc:" id="kVc-dv-fSe">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="tcE-4a-kz9">
+                    <rect key="frame" x="18" y="20" width="150" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="9. Write lyrics to iTunes:" id="O2S-u2-uDh">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <customView id="hlc-is-WV9" customClass="MASShortcutView">
-                    <rect key="frame" x="245" y="74" width="150" height="19"/>
+                    <rect key="frame" x="245" y="101" width="150" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
                 <customView id="paS-fO-cn5" customClass="MASShortcutView">
-                    <rect key="frame" x="245" y="47" width="150" height="19"/>
+                    <rect key="frame" x="245" y="74" width="150" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
                 <customView id="qKj-Pg-4Lu" customClass="MASShortcutView">
+                    <rect key="frame" x="245" y="47" width="150" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </customView>
+                <customView id="s4g-17-rwP" customClass="MASShortcutView">
                     <rect key="frame" x="245" y="20" width="150" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
+                <customView id="Kkb-87-uoI" customClass="MASShortcutView">
+                    <rect key="frame" x="245" y="213" width="150" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </customView>
+                <customView id="Nzq-iL-PvG" customClass="MASShortcutView">
+                    <rect key="frame" x="245" y="239" width="150" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </customView>
             </subviews>
-            <point key="canvasLocation" x="335.5" y="247"/>
+            <point key="canvasLocation" x="335.5" y="260.5"/>
         </customView>
-        <customView id="162-Ff-cWD" userLabel="Donate View">
-            <rect key="frame" x="0.0" y="0.0" width="422" height="330"/>
+        <customView id="TtF-ul-wFD" customClass="ClickView" customModule="LyricsX" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="310" height="249"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="ci2-BL-qsI">
-                    <rect key="frame" x="272" y="20" width="128" height="128"/>
+                <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="N1j-Xc-BZz">
+                    <rect key="frame" x="20" y="47" width="270" height="147"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="donate_alipay" id="DMy-J1-paF"/>
-                </imageView>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="nSt-yb-wY6">
-                    <rect key="frame" x="23" y="20" width="128" height="128"/>
+                    <clipView key="contentView" id="TRp-Wu-9wk">
+                        <rect key="frame" x="1" y="23" width="268" height="123"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" headerView="kGj-os-NSe" id="mPZ-v6-VNT" customClass="PresetListView" customModule="LyricsX" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="268" height="123"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <size key="intercellSpacing" width="3" height="2"/>
+                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                <tableColumns>
+                                    <tableColumn identifier="presetName" editable="NO" width="265" minWidth="40" maxWidth="1000" id="1zd-xq-HUx">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Preset Name">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="HdK-aW-ma1">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                    </tableColumn>
+                                </tableColumns>
+                                <connections>
+                                    <action trigger="doubleAction" selector="applyPreset:" target="-2" id="Mui-AQ-M4Z"/>
+                                    <outlet property="dataSource" destination="-2" id="Yy3-Kc-tGc"/>
+                                    <outlet property="delegate" destination="-2" id="SUW-wh-Kmv"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="W6O-pd-tsJ">
+                        <rect key="frame" x="1" y="166" width="175" height="16"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="K0u-xj-x6g">
+                        <rect key="frame" x="224" y="17" width="15" height="102"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <tableHeaderView key="headerView" id="kGj-os-NSe">
+                        <rect key="frame" x="0.0" y="0.0" width="268" height="23"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </tableHeaderView>
+                </scrollView>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="pHo-ly-zfM">
+                    <rect key="frame" x="18" y="201" width="274" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="donate_wechat" id="v2z-0K-0JA"/>
-                </imageView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="eEv-cI-Ckr">
-                    <rect key="frame" x="26" y="149" width="54" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Wechat:" id="aej-Pv-vvF">
-                        <font key="font" metaFont="system"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="※ Preset will save lyrics layout, font and color settings. New presets use current preset to init." id="kSs-xj-7gk">
+                        <font key="font" size="11" name=".LucidaGrandeUI"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="oIf-G5-j7k">
-                    <rect key="frame" x="275" y="149" width="45" height="17"/>
+                <button verticalHuggingPriority="750" id="0AO-Xo-twS">
+                    <rect key="frame" x="229" y="8" width="67" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Alipay:" id="1zg-KH-477">
+                    <buttonCell key="cell" type="push" title="New" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Lcw-pT-jdH">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="IgD-Fm-Ttn">
-                    <rect key="frame" x="26" y="174" width="370" height="136"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="addPreset:" target="-2" id="ZzG-va-iEK"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" id="QSO-Rf-saY">
+                    <rect key="frame" x="149" y="8" width="80" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="AAK-6G-7y1">
+                    <buttonCell key="cell" type="push" title="Import" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="f7U-7B-jnN">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
-                        <mutableString key="title">     Hi from the developer of LricsVox. I hope you enjoy using LricsVox!      LyricsVox is a open source app based on some third party libraries. Its maintenance and developing needs time and money. In fact, I'm concidering set up a server to deal with the update thing. If you love this app, you can support me by donating using Wechat or Alipay. Thank you for being awesome!</mutableString>
+                    </buttonCell>
+                    <connections>
+                        <action selector="importPreset:" target="-2" id="lRj-xK-hWR"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" id="XON-GA-vuR">
+                    <rect key="frame" x="64" y="8" width="85" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Reflash" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="W2E-fZ-His">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="13" name=".PingFangSC-Regular"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="reflashPreset:" target="-2" id="RxD-XH-W5b"/>
+                    </connections>
+                </button>
+            </subviews>
+            <point key="canvasLocation" x="773" y="220.5"/>
+        </customView>
+        <window title="Dialog" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="iu5-wj-vE1">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="207" width="349" height="87"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <view key="contentView" id="61r-pN-p57" customClass="ClickView" customModule="LyricsX" customModuleProvider="target">
+                <rect key="frame" x="0.0" y="0.0" width="349" height="87"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField verticalHuggingPriority="750" id="Vlf-dX-cGS">
+                        <rect key="frame" x="20" y="20" width="157" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="s55-UD-ZCB">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="XAh-rD-sPQ">
+                        <rect key="frame" x="18" y="50" width="172" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Please type in preset name:" id="P2O-l0-YBg">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" id="pez-hE-TTR">
+                        <rect key="frame" x="189" y="14" width="82" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Sjb-Eh-B5R">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="cancelChangePresetName:" target="-2" id="cgO-sQ-kVx"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" id="8mk-rY-wQr">
+                        <rect key="frame" x="276" y="14" width="59" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yKM-Ht-GcM">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="confirmPrestName:" target="-2" id="cL3-5r-7em"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="773.5" y="622.5"/>
+        </window>
+        <menu id="A8e-2W-qhd">
+            <items>
+                <menuItem title="Apply" id="tM3-Cb-kab">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="applyPreset:" target="-2" id="EAO-VE-gdR"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Rename" id="Uee-CP-n07">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="renamePreset:" target="-2" id="YyK-5w-8bz"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Export" id="Acm-0X-TGQ">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="exportPreset:" target="-2" id="gXq-pP-kYw"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Remove" id="bZQ-Mv-GFo">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="removePreset:" target="-2" id="o3x-Ui-iTi"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="670.5" y="448.5"/>
+        </menu>
+        <arrayController objectClassName="LyricsX.FilterString" id="ZYF-Pk-6fW" userLabel="Direct Filter">
+            <declaredKeys>
+                <string>keyword</string>
+            </declaredKeys>
+            <connections>
+                <binding destination="-2" name="contentArray" keyPath="self.directFilter" id="Kfy-Ky-Nlg"/>
+            </connections>
+        </arrayController>
+        <arrayController objectClassName="LyricsX.FilterString" id="JzX-S8-jdO" userLabel="Condition Filter">
+            <declaredKeys>
+                <string>keyword</string>
+            </declaredKeys>
+            <connections>
+                <binding destination="-2" name="contentArray" keyPath="self.conditionalFilter" id="cIe-Gf-mIi"/>
+            </connections>
+        </arrayController>
+        <viewController id="2qk-ju-pFu" userLabel="Popover View Controller">
+            <connections>
+                <outlet property="view" destination="saB-ui-pbt" id="hxI-ZT-hRq"/>
+            </connections>
+        </viewController>
+        <popover behavior="t" id="ogp-WF-MQM">
+            <connections>
+                <outlet property="contentViewController" destination="2qk-ju-pFu" id="3Uz-hN-UQd"/>
+            </connections>
+        </popover>
+        <customView id="br6-UQ-beu" customClass="ClickView" customModule="LyricsX" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="460" height="319"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button id="Mus-xI-ufB">
+                    <rect key="frame" x="19" y="283" width="131" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Enable lyrics filter" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="okA-6s-moD">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" size="13" name=".PingFangSC-Regular"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="UKb-ML-D6F" name="value" keyPath="values.LyricsEnableFilter" id="gsd-oX-szq">
+                            <dictionary key="options">
+                                <bool key="NSValidatesImmediately" value="YES"/>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </button>
+                <box autoresizesSubviews="NO" borderType="line" titlePosition="noTitle" id="Fa4-UG-48v">
+                    <rect key="frame" x="17" y="16" width="426" height="239"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <view key="contentView" id="Hcj-NH-RJ0">
+                        <rect key="frame" x="1" y="1" width="424" height="237"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" id="oez-Cc-Mq2">
+                                <rect key="frame" x="259" y="43" width="31" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="-" bezelStyle="rounded" alignment="center" controlSize="mini" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4Qu-4J-EKm">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="systemBold" size="11"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="remove:" target="JzX-S8-jdO" id="aBl-dh-w5k"/>
+                                    <binding destination="JzX-S8-jdO" name="enabled" keyPath="canRemove" id="TmW-3j-VVK"/>
+                                </connections>
+                            </button>
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="kyp-Lf-1Zb">
+                                <rect key="frame" x="20" y="67" width="181" height="135"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <clipView key="contentView" drawsBackground="NO" id="vos-t2-eGh">
+                                    <rect key="frame" x="1" y="0.0" width="179" height="134"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" autosaveColumns="NO" headerView="hU6-M3-R6L" id="iOq-Po-ONP">
+                                            <rect key="frame" x="0.0" y="0.0" width="179" height="111"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <size key="intercellSpacing" width="3" height="2"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                            <tableColumns>
+                                                <tableColumn width="90.40234375" minWidth="40" maxWidth="1000" id="D04-Hb-SPR">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="Keyword">
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                    </tableHeaderCell>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="center" title="Text Cell" id="hNe-Gr-JIt">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <connections>
+                                                        <binding destination="ZYF-Pk-6fW" name="value" keyPath="arrangedObjects.keyword" id="yUJ-UP-UzB"/>
+                                                    </connections>
+                                                </tableColumn>
+                                                <tableColumn identifier="" width="83" minWidth="10" maxWidth="3.4028234663852886e+38" id="G9G-Ho-zgf">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Case Sensitive">
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    </tableHeaderCell>
+                                                    <buttonCell key="dataCell" type="check" bezelStyle="regularSquare" imagePosition="overlaps" inset="2" id="rzx-Kh-NW5">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <connections>
+                                                        <binding destination="ZYF-Pk-6fW" name="value" keyPath="arrangedObjects.caseSensitive" id="JUL-66-khs"/>
+                                                    </connections>
+                                                </tableColumn>
+                                            </tableColumns>
+                                        </tableView>
+                                    </subviews>
+                                    <nil key="backgroundColor"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="jaM-4l-MQc">
+                                    <rect key="frame" x="1" y="118" width="163" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="5Gp-lp-Thc">
+                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <tableHeaderView key="headerView" id="hU6-M3-R6L">
+                                    <rect key="frame" x="0.0" y="0.0" width="179" height="23"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableHeaderView>
+                            </scrollView>
+                            <button verticalHuggingPriority="750" id="Rqu-iu-HZQ">
+                                <rect key="frame" x="19" y="43" width="31" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="+" bezelStyle="rounded" alignment="center" controlSize="mini" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="j61-9q-pV7">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="systemBold" size="11"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="addKeywordForDirectFilterList:" target="-2" id="elS-d5-tef"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" id="Ad3-br-whi">
+                                <rect key="frame" x="56" y="43" width="31" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="-" bezelStyle="rounded" alignment="center" controlSize="mini" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WdR-tS-imm">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="systemBold" size="11"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="remove:" target="ZYF-Pk-6fW" id="Dmt-D9-uQS"/>
+                                    <binding destination="ZYF-Pk-6fW" name="enabled" keyPath="canRemove" id="IFp-qU-vEr"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" id="stZ-0U-FWu">
+                                <rect key="frame" x="222" y="43" width="31" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="+" bezelStyle="rounded" alignment="center" controlSize="mini" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RUo-95-VvH">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="systemBold" size="11"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="addKeywordForConditionalFilterList:" target="-2" id="D3t-s4-n8z"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" id="uri-VK-yuk">
+                                <rect key="frame" x="14" y="8" width="131" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Reset Filter List" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ljv-9p-mb2">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="resetFilterList:" target="-2" id="fdq-MW-Bw5"/>
+                                </connections>
+                            </button>
+                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" id="2qM-Vb-g0g">
+                                <rect key="frame" x="381" y="11" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Gw7-PD-1Yt">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="showHelp:" target="-2" id="Jh1-Vf-2X6"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" id="PTJ-Lg-LbK">
+                                <rect key="frame" x="217" y="8" width="80" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Revert" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NQO-E1-csh">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="revertFilterKeyword:" target="-2" id="gHx-OA-8ol"/>
+                                </connections>
+                            </button>
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="lLj-bQ-m7t">
+                                <rect key="frame" x="223" y="67" width="181" height="135"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <clipView key="contentView" id="27M-0Q-LXC">
+                                    <rect key="frame" x="1" y="0.0" width="179" height="134"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" autosaveColumns="NO" headerView="FtL-g3-pP5" id="q3C-Ye-vOl">
+                                            <rect key="frame" x="0.0" y="0.0" width="179" height="111"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <size key="intercellSpacing" width="3" height="2"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                            <tableColumns>
+                                                <tableColumn width="89.62890625" minWidth="40" maxWidth="1000" id="1h2-He-58I">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="Keyword">
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                    </tableHeaderCell>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="center" title="Text Cell" id="4r1-nB-KJ1">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <connections>
+                                                        <binding destination="JzX-S8-jdO" name="value" keyPath="arrangedObjects.keyword" id="U4P-ET-lSc"/>
+                                                    </connections>
+                                                </tableColumn>
+                                                <tableColumn identifier="" width="83" minWidth="10" maxWidth="3.4028234663852886e+38" id="hG4-xb-PAF">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Case Sensitive">
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    </tableHeaderCell>
+                                                    <buttonCell key="dataCell" type="check" bezelStyle="regularSquare" imagePosition="overlaps" inset="2" id="8Lw-k1-vRK">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <connections>
+                                                        <binding destination="JzX-S8-jdO" name="value" keyPath="arrangedObjects.caseSensitive" id="6FV-Sa-dSw"/>
+                                                    </connections>
+                                                </tableColumn>
+                                            </tableColumns>
+                                        </tableView>
+                                    </subviews>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="geK-tP-p0X">
+                                    <rect key="frame" x="1" y="118" width="163" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="ikX-3S-bGc">
+                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <tableHeaderView key="headerView" id="FtL-g3-pP5">
+                                    <rect key="frame" x="0.0" y="0.0" width="179" height="23"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableHeaderView>
+                            </scrollView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="b8w-t5-Rdh">
+                                <rect key="frame" x="60" y="210" width="100" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Direct Filter List" id="ONR-pk-2Wb">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="NK8-DD-uOy">
+                                <rect key="frame" x="239" y="210" width="132" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Conditional Filter List" id="6ge-WA-STQ">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" id="tIB-I7-gbZ">
+                                <rect key="frame" x="304" y="8" width="69" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="X8y-ph-eWB">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="saveFilterKeyword:" target="-2" id="oAg-Aw-wPg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </view>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </box>
+                <button id="R3D-uS-GF7">
+                    <rect key="frame" x="19" y="259" width="133" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Enable smart filter" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="j3c-kf-mht">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="UKb-ML-D6F" name="enabled" keyPath="values.LyricsEnableFilter" id="Fys-AH-oii"/>
+                        <binding destination="UKb-ML-D6F" name="value" keyPath="values.LyricsEnableSmartFilter" id="EGK-fx-GBi">
+                            <dictionary key="options">
+                                <bool key="NSValidatesImmediately" value="YES"/>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </button>
+            </subviews>
+            <point key="canvasLocation" x="1275" y="220.5"/>
+        </customView>
+        <customView id="saB-ui-pbt">
+            <rect key="frame" x="0.0" y="0.0" width="319" height="119"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="kz3-WR-6VP">
+                    <rect key="frame" x="18" y="18" width="275" height="84"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" id="q7o-1Z-gK3">
+                        <font key="font" size="11" name=".LucidaGrandeUI"/>
+                        <string key="title">※ Direct Filter List：Filter lyrics if keyword occured ※ Conditional Filter List：Filter lyrics if both keyword and colon occured ※ Changes will not auto save unless you click Save button ※ Highly recommand to keep default keywords</string>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="854" y="264"/>
+            <point key="canvasLocation" x="1258.5" y="519.5"/>
         </customView>
     </objects>
     <resources>
         <image name="Font_icon" width="24" height="24"/>
-        <image name="donate_alipay" width="128" height="128"/>
-        <image name="donate_wechat" width="128" height="128"/>
         <image name="openDir_icon" width="32" height="32"/>
     </resources>
 </document>

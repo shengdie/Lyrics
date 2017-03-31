@@ -1,8 +1,8 @@
 # LyricsX
-Swift-based iTunes plug-in app to display lyrics on the desktop.
+Swift-based iTunes/Vox plug-in app to display lyrics on the desktop.
 
 ###Features
-* Work perfectly with iTunes.
+* Work perfectly with iTunes/Vox.
 * Auto search and download lrc to local from Internet.
 * Display lyrics on the desktop.
 
@@ -63,14 +63,16 @@ Swift-based iTunes plug-in app to display lyrics on the desktop.
 
 ![lrcmaker-2]
 (http://i64.tinypic.com/169es0z.jpg)
-* Auto launches with iTunes or user login.
+* Auto launches with iTunes/Vox or user login.
 
 ###System Requirement
 * Mac OS X 10.9 (Mavericks) or higher.
+(For Swift and NSURLSession used in the project are only available on 10.9 and later.)
 
 ###Build Requirement
 * Mac OS X 10.11 (El Capitan) or higher.
-* Xcode 7.0 or higher.
+* Xcode 8.0 or higher.
+(Swift 3 is only available on Xcode 8 and later.)
 
 ###Third Party Library & Frameworks
 * [OpenCC](https://github.com/BYVoid/OpenCC)

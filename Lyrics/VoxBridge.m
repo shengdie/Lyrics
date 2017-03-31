@@ -2,10 +2,11 @@
 //  VoxBridge.m
 //  Lyrics
 //
-//  Created by Eru on 15/12/31.
-//  Copyright © 2015年 Eru. All rights reserved.
+//  Created by xinmm on 3/31/17.
+//  Copyright © 2017 Eru. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import "VoxBridge.h"
 #import "Vox.h"
 
@@ -53,6 +54,17 @@
     }
 }
 
+-(NSString *) currentAlbum {
+    @autoreleasepool {
+        NSString *album = vox.album;
+        if (!album) {
+            album = @"";
+        }
+        return album;
+    }
+}
+
+
 -(NSString *) currentPersistentID {
     @autoreleasepool {
         NSString *persistentID = vox.uniqueID;
@@ -66,6 +78,21 @@
 -(NSInteger) playerPosition {
     @autoreleasepool {
         return (NSInteger)(vox.currentTime * 1000);
+    }
+}
+
+-(void) play {
+    @autoreleasepool {
+        if (vox.playerState != 1) { //Not Playing
+            [vox playpause];
+        }
+    }
+}
+-(void) pause {
+    @autoreleasepool {
+        if (vox.playerState == 1) {
+            [vox playpause];
+        }
     }
 }
 

@@ -8,9 +8,8 @@
 
 // Alert
 "ERROR_OCCUR"="An error occured";
-"PATH_IS_NOT_DIR"="The default path which used to save lrc files is not a directory.\nIn this case no lrc can be saved.";
-"OPEN_PREFS"="Open Preferences and Set";
-"IGNORE"="Ignore";
+"PATH_IS_NOT_DIR"="The custom path which used to save lrc files is not a directory.\nNow the path is reset to default, and you can open preferences panel to set a new one.";
+"OPEN_PREFS"="Open Preferences";
 "CHANGE_UNSAVED"="Changes unsaved";
 "DISGARDS_LEAVE"="Do you really want to disgards all the changes and leave?";
 "APPLY_LEAVE"="Apply and Leave";
@@ -24,6 +23,13 @@
 "UNSUPPORTED_ENCODING"="Unsupported Text Encoding";
 "ONLY_UTF8"="LyricsX only supports UTF-8 Encoding, and more encoding in the future updates.";
 "OK"="OK";
+"RESET_FILTER"="Reset Filter Keywords";
+"RESET_CONFIRM"="Do you really want to reset the list?";
+"RESET"="Reset";
+"OVERRIDE_OR_SKIP"="Override or Skip Songs";
+"OVERRIDE_OR_SKIP_INTRO"="Do you want to override or skip songs which already have lyrics?";
+"OVERRIDE"="Override";
+"SKIP"="Skip";
 
 // Prefs Toolbar Identifier
 "GENERAL"="General";
@@ -31,6 +37,15 @@
 "FONT_COLOR"="Font & Color";
 "SHORTCUT"="Shortcut";
 "DONATE"="Donate";
+"PRESET"="Preset";
+"FILTER"="Lyrics Filter";
+
+// Preset Prefs
+"UNTITLED_PRESET"="Untitled Preset";
+"EMPTY_NAME"="Empty Preset Name";
+"PRESET_EXISTS"="Preset With the Same Already Exists";
+"INVALID_PRESET"="Invalid Preset";
+"PRESET_LOADED"="Preset Loaded";
 
 // TextPreview
 "PREVIEW_TEXT"="Lyrics Preview";
@@ -40,19 +55,26 @@
 
 // Notification
 "NO_PLAYING_TRACK"="No Playing Track";
-"IGNORE_LYRICS"="Ignored lyrics from LrcSeeker.";
+"IGNORE_LYRICS"="Ignored lyrics from %@.";
 
 // menu bar
 "HIGHER_LYRICS"="Higher Lyrics";
 "LOWER_LYRICS"="Lower Lyrics";
-"VERTICAL"="Switch to Vertical Lyrics(beta)";
-"HORIZONTAL"="Switch to Horizontal Lyrics";
+"EMPTY"="(Empty)";
 
 // Message Window
-"OFFSET"="Offset: %d";
+"OFFSET"="Offset:%d ms";
 "DESKTOP_ON"="Desktop Lyrics:ON";
 "MENU_BAR_ON"="Menu Bar Lyrics:ON";
 "BOTH_ON"="Desktop & Menu Bar Lyrics:ON";
 "OPERATION_FAILED"="Operation Failed:No Lrc";
 "WROTE_TO_ITUNES"="Lyrics Has Wrote To iTunes";
 "COPYED_TO_PB"="Lyrics Has Copyed To Pasteboard";
+"NO_ARTWORK"="No Available Artwork";
+"RECIEVE_LYRICS"="Recieved Lyrics From %@";
+
+// About Window
+"EULA"="EULA";
+
+// Other
+"NEW_KEYWORD"="*New Keyword*";

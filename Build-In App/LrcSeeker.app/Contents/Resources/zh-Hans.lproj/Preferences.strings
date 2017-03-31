@@ -17,8 +17,8 @@
 /* Class = "NSButtonCell"; title = "当最后一个窗口关闭时结束程序"; ObjectID = "GUp-Rf-c1M"; */
 "GUp-Rf-c1M.title" = "当最后一个窗口关闭时结束程序";
 
-/* Class = "NSButtonCell"; title = "启动时用Vox播放中的曲目自动填充歌词与歌手名并搜索"; ObjectID = "Mgv-zy-F47"; */
-"Mgv-zy-F47.title" = "启动时用Vox播放中的曲目自动填充歌词与歌手名并搜索";
+/* Class = "NSButtonCell"; title = "启动时用iTunes播放中的曲目自动填充歌词与歌手名并搜索"; ObjectID = "Mgv-zy-F47"; */
+"Mgv-zy-F47.title" = "启动时用iTunes播放中的曲目自动填充歌词与歌手名并搜索";
 
 /* Class = "NSMenuItem"; title = "桌面"; ObjectID = "NSa-pO-Wdn"; */
 "NSa-pO-Wdn.title" = "桌面";

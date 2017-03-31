@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="AppController" customModule="LyricsVox" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="AppController" customModule="LyricsX" customModuleProvider="target">
             <connections>
                 <outlet property="delayMenuItem" destination="ENJ-eO-aCa" id="Ds4-Ab-aOj"/>
                 <outlet property="lyricsDelayView" destination="3Jx-vU-QNM" id="2fJ-DT-b0e"/>
                 <outlet property="lyricsHeightMenuItem" destination="3ij-j4-VJE" id="Q4F-Zg-dYg"/>
-                <outlet property="lyricsModeMenuItem" destination="WWe-QG-SLQ" id="7IY-DD-Jwn"/>
+                <outlet property="presetMenuItem" destination="2lK-fX-158" id="mBl-9H-PXZ"/>
                 <outlet property="statusBarMenu" destination="tTA-dl-Isx" id="TWf-gB-4JV"/>
             </connections>
         </customObject>
@@ -45,13 +45,57 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="hYE-WS-gAK"/>
-                            <menuItem title="Switch to Vertical Lyrics (beta)" id="WWe-QG-SLQ">
+                            <menuItem title="Use Auto Layout" id="dzL-85-R9K">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="setAutoLayout:" target="-2" id="yuJ-93-R2r"/>
+                                    <binding destination="Ppe-ZY-ULn" name="value" keyPath="values.LyricsUseAutoLayout" id="8AK-pz-Gk1">
+                                        <dictionary key="options">
+                                            <bool key="NSValidatesImmediately" value="YES"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Use Constant Layout" id="YjJ-Pr-EK5">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="setAutoLayout:" target="-2" id="UYR-9Y-1kg"/>
+                                    <binding destination="Ppe-ZY-ULn" name="value" keyPath="values.LyricsUseAutoLayout" id="Xzt-Mf-utZ">
+                                        <dictionary key="options">
+                                            <bool key="NSValidatesImmediately" value="YES"/>
+                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="7FM-8f-Uuk"/>
+                            <menuItem title="Use Horizontal Lyrics" toolTip="Only Auto Layout" id="mdB-hQ-Zqo">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="changeLyricsMode:" target="-2" id="y9o-H0-R74"/>
+                                    <binding destination="Ppe-ZY-ULn" name="value" keyPath="values.LyricsIsVerticalLyrics" id="E5l-vg-BWW">
+                                        <dictionary key="options">
+                                            <bool key="NSValidatesImmediately" value="YES"/>
+                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                        </dictionary>
+                                    </binding>
+                                    <binding destination="Ppe-ZY-ULn" name="enabled" keyPath="values.LyricsUseAutoLayout" id="2EW-7T-6Ha"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Use Vertical Lyrics (beta)" toolTip="Only Auto Layout" id="WWe-QG-SLQ">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="changeLyricsMode:" target="-2" id="j5E-GF-gel"/>
+                                    <binding destination="Ppe-ZY-ULn" name="value" keyPath="values.LyricsIsVerticalLyrics" id="5rE-5V-yts">
+                                        <dictionary key="options">
+                                            <bool key="NSValidatesImmediately" value="YES"/>
+                                        </dictionary>
+                                    </binding>
+                                    <binding destination="Ppe-ZY-ULn" name="enabled" keyPath="values.LyricsUseAutoLayout" id="FON-If-HlC"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Lower Lyrics" id="3ij-j4-VJE">
+                            <menuItem isSeparatorItem="YES" id="wsZ-7A-xCk"/>
+                            <menuItem title="Lower Lyrics" toolTip="Needs Auto Layout and Horizontal mode enabled" id="3ij-j4-VJE">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="handleWorkSpaceChange:" target="-2" id="mqy-gU-MjL"/>
@@ -127,6 +171,18 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="CM0-FN-R8L"/>
+                            <menuItem title="Write Lyrics to iTunes" id="9IB-fJ-7CD">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="writeLyricsToiTunes:" target="-2" id="OzK-ZJ-pvP"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Write All Lyrics to iTunes" id="0bi-X3-hct">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="writeAllLyricsToiTunes:" target="-2" id="NZD-Sq-Ebt"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Wrong Lyrics" id="ed7-VT-i2J">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
@@ -136,10 +192,39 @@
                         </items>
                     </menu>
                 </menuItem>
+                <menuItem title="Presets" id="2lK-fX-158">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Presets" id="wMI-On-bIv">
+                        <items>
+                            <menuItem title="(Empty)" id="cB6-FH-qcX">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="6Qg-cW-Jgj"/>
+                <menuItem title="Export Artwork From iTunes..." id="Czc-V7-Kvq">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="exportArtwork:" target="-2" id="qL1-eT-eXl"/>
+                    </connections>
+                </menuItem>
                 <menuItem title="Search Lyrics &amp; Artworks..." id="a7O-Hu-mob">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="searchLyricsAndArtworks:" target="-2" id="6Uh-VR-sAm"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Lock Lyrics Floating Window" id="pjL-Kc-VQi">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="lockLyricsFloatingWindow:" target="-2" id="Ypj-1j-EUF"/>
+                        <binding destination="-2" name="value" keyPath="self.lockFloatingWindow" id="3CP-hu-gHH">
+                            <dictionary key="options">
+                                <bool key="NSValidatesImmediately" value="YES"/>
+                            </dictionary>
+                        </binding>
+                        <binding destination="Ppe-ZY-ULn" name="hidden" keyPath="values.LyricsUseAutoLayout" id="sje-Pq-fbY"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="jz7-1h-D1M"/>
@@ -149,11 +234,17 @@
                         <action selector="showPreferences:" target="-2" id="OHZ-tL-sQF"/>
                     </connections>
                 </menuItem>
-                <menuItem isSeparatorItem="YES" id="txX-dr-HGn"/>
-                <menuItem title="About LyricsVox..." id="QoB-2y-8a4">
+                <menuItem title="Donate..." id="xF9-cS-i7i">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="orderFrontStandardAboutPanel:" target="-1" id="UVr-pZ-Hc1"/>
+                        <action selector="showDonate:" target="-2" id="r4X-XC-MX0"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="txX-dr-HGn"/>
+                <menuItem title="About LyricsX..." id="QoB-2y-8a4">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="showAboutWindow:" target="-2" id="12Q-aq-Cs4"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Check For Update..." id="R96-lC-i2Q">
@@ -162,7 +253,7 @@
                         <action selector="checkForUpdate:" target="-2" id="J20-89-mLG"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Quit LyricsVox" id="V6J-Hi-T0z">
+                <menuItem title="Quit LyricsX" id="V6J-Hi-T0z">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="terminate:" target="-1" id="KYg-M6-JfZ"/>
@@ -172,19 +263,39 @@
             <point key="canvasLocation" x="332" y="211.5"/>
         </menu>
         <customView id="3Jx-vU-QNM" userLabel="Lyrics Delay View">
-            <rect key="frame" x="0.0" y="0.0" width="237" height="30"/>
+            <rect key="frame" x="0.0" y="0.0" width="245" height="30"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q88-EF-ohR">
-                    <rect key="frame" x="18" y="6" width="92" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="q88-EF-ohR">
+                    <rect key="frame" x="18" y="6" width="85" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Lyrics Offset:" id="03a-uH-jAo">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hod-ZB-daW">
-                    <rect key="frame" x="109" y="5" width="61" height="19"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QQX-LU-OA2">
+                    <rect key="frame" x="210" y="6" width="22" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="ms" id="htP-HY-Y99">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lUm-Ay-pgl">
+                    <rect key="frame" x="191" y="1" width="19" height="27"/>
+                    <stepperCell key="cell" continuous="YES" alignment="left" increment="100" minValue="-10000" maxValue="10000" id="beX-Hj-1Ng"/>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="self.timeDly" id="RUR-nb-r1Q">
+                            <dictionary key="options">
+                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
+                                <bool key="NSValidatesImmediately" value="YES"/>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </stepper>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hod-ZB-daW">
+                    <rect key="frame" x="106" y="6" width="83" height="19"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="Xwr-CI-ndX">
                         <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" lenient="YES" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" nilSymbol="nil" id="ZW5-md-eUU">
                             <real key="minimum" value="-10000"/>
@@ -204,28 +315,19 @@
                         </binding>
                     </connections>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QQX-LU-OA2">
-                    <rect key="frame" x="197" y="6" width="22" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="ms" id="htP-HY-Y99">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lUm-Ay-pgl">
-                    <rect key="frame" x="175" y="1" width="19" height="27"/>
-                    <stepperCell key="cell" continuous="YES" alignment="left" increment="100" minValue="-10000" maxValue="10000" id="beX-Hj-1Ng"/>
-                    <connections>
-                        <binding destination="-2" name="value" keyPath="self.timeDly" id="RUR-nb-r1Q">
-                            <dictionary key="options">
-                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                <bool key="NSValidatesImmediately" value="YES"/>
-                            </dictionary>
-                        </binding>
-                    </connections>
-                </stepper>
             </subviews>
-            <point key="canvasLocation" x="332.5" y="402"/>
+            <constraints>
+                <constraint firstItem="QQX-LU-OA2" firstAttribute="leading" secondItem="lUm-Ay-pgl" secondAttribute="trailing" constant="5" id="011-0N-4gh"/>
+                <constraint firstAttribute="trailing" secondItem="QQX-LU-OA2" secondAttribute="trailing" constant="15" id="70c-ev-L8V"/>
+                <constraint firstItem="q88-EF-ohR" firstAttribute="leading" secondItem="3Jx-vU-QNM" secondAttribute="leading" constant="20" id="DnV-HB-B84"/>
+                <constraint firstItem="QQX-LU-OA2" firstAttribute="centerY" secondItem="3Jx-vU-QNM" secondAttribute="centerY" id="LP7-sC-MWz"/>
+                <constraint firstItem="Hod-ZB-daW" firstAttribute="leading" secondItem="q88-EF-ohR" secondAttribute="trailing" constant="5" id="hy1-mo-ZrC"/>
+                <constraint firstItem="lUm-Ay-pgl" firstAttribute="centerY" secondItem="3Jx-vU-QNM" secondAttribute="centerY" id="jFW-I8-gXH"/>
+                <constraint firstItem="lUm-Ay-pgl" firstAttribute="leading" secondItem="Hod-ZB-daW" secondAttribute="trailing" constant="5" id="lC9-iB-LtB"/>
+                <constraint firstItem="Hod-ZB-daW" firstAttribute="centerY" secondItem="3Jx-vU-QNM" secondAttribute="centerY" id="vUu-fL-IsW"/>
+                <constraint firstItem="q88-EF-ohR" firstAttribute="centerY" secondItem="3Jx-vU-QNM" secondAttribute="centerY" id="wGc-Uz-pn7"/>
+            </constraints>
+            <point key="canvasLocation" x="336.5" y="402"/>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="Ppe-ZY-ULn"/>
     </objects>

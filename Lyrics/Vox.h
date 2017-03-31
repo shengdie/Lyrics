@@ -1,6 +1,10 @@
-/*
- * Vox.h
- */
+//
+//  Vox.h
+//  Lyrics
+//
+//  Created by xinmm on 3/31/17.
+//  Copyright © 2017 Eru. All rights reserved.
+//
 
 #import <AppKit/AppKit.h>
 #import <ScriptingBridge/ScriptingBridge.h>
@@ -64,4 +68,3 @@
 @property NSInteger repeatState;  // Player repeat state (none = 0, repeat one = 1, repeat all = 2)
 
 @end
-

@@ -1,5 +1,5 @@
 //
-//  Macros.swift
+//  GlobalConst.swift
 //  Lyrics
 //
 //  Created by Eru on 15/11/6.
@@ -10,13 +10,12 @@ import Foundation
 
 //disable NSLog all over the codes in release builds
 #if !DEBUG
-    func NSLog(format: String, _ args: CVarArgType...) {}
+    func NSLog(_ format: String, _ args: CVarArg...) {}
 #endif
 
 //Notifications
-let LyricsAttributesChangedNotification:String="LyricsAttributesChanged"
 let LyricsUserEditLyricsNotification:String="LyricsUserEditLyrics"
-let LyricsLayoutChangeNotification:String="LyricsLayoutChange"
+let LyricsPresetDidChangedNotification:String="LyricsPresetDidChanged"
 
 //Menu
 let LyricsDesktopLyricsEnabled:String="LyricsDesktopLyricsEnabled"
@@ -29,12 +28,11 @@ let LyricsUserSavingPath:String="LyricsUserSavingPath"
 let LyricsAutoLaunches:String="LyricsAutoLaunches"
 let LyricsLaunchTpyePopUpIndex:String="LyricsLaunchTpyePopUpIndex"
 let LyricsServerIndex:String="LyricsServerIndex"
+let LyricsQuitWithITunes:String="LyricsQuitWithITunes"
 let LyricsQuitWithVox:String="LyricsQuitWithVox"
 let LyricsDisableAllAlert:String="LyricsDisableAllAlert"
 let LyricsUseAutoLayout:String="LyricsUseAutoLayout"
 let LyricsHeightFromDockToLyrics:String="LyricsHeightFromDockToLyrics"
-let LyricsConstToLeft:String="LyricsConstToLeft"
-let LyricsConstToBottom:String="LyricsConstToBottom"
 let LyricsConstWidth:String="LyricsConstWidth"
 let LyricsConstHeight:String="LyricsConstHeight"
 
@@ -60,10 +58,20 @@ let LyricsShadowRadius:String="LyricsShadowRadius"
 let LyricsBgHeightINCR:String="LyricsBgHeightINCR"
 let LyricsYOffset:String="LyricsYOffset"
 
+//Filter Preferences Defaults
+let LyricsDirectFilterKey:String="LyricsDirectFilterKey"
+let LyricsConditionalFilterKey:String="LyricsConditionalFilterKey"
+let LyricsEnableFilter:String="LyricsEnableFilter"
+let LyricsEnableSmartFilter:String="LyricsEnableSmartFilter"
+
 //Shortcut
+let ShortcutOffsetIncr:String="ShortcutOffsetIncr"
+let ShortcutOffsetDecr:String="ShortcutOffsetDecr"
 let ShortcutLyricsModeSwitch:String="ShortcutLyricsModeSwitch"
 let ShortcutDesktopMenubarSwitch:String="ShortcutDesktopMenubarSwitch"
 let ShortcutOpenLrcSeeker:String="ShortcutOpenLrcSeeker"
 let ShortcutCopyLrcToPb:String="ShortcutCopyLrcToPb"
 let ShortcutEditLrc:String="ShortcutEditLrc"
 let ShortcutMakeLrc:String="ShortcutMakeLrc"
+//let ShortcutWriteLrcToiTunes:String="ShortcutWriteLrcToiTunes"
+//let ShortcutWriteLrcToiTunes:String="ShortcutWriteLrcToiTunes"

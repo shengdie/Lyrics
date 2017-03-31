@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0710"
+   LastUpgradeVersion = "0830"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "76C511581BEC6F8F0095F510"
-               BuildableName = "LyricsVox.app"
-               BlueprintName = "LyricsVox"
+               BlueprintIdentifier = "76D060411C02B8D8000DA86C"
+               BuildableName = "LyricsX Helper.app"
+               BlueprintName = "LyricsX Helper"
                ReferencedContainer = "container:Lyrics.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "76C511581BEC6F8F0095F510"
-            BuildableName = "LyricsVox.app"
-            BlueprintName = "LyricsVox"
+            BlueprintIdentifier = "76D060411C02B8D8000DA86C"
+            BuildableName = "LyricsX Helper.app"
+            BlueprintName = "LyricsX Helper"
             ReferencedContainer = "container:Lyrics.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -55,9 +55,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "76C511581BEC6F8F0095F510"
-            BuildableName = "LyricsVox.app"
-            BlueprintName = "LyricsVox"
+            BlueprintIdentifier = "76D060411C02B8D8000DA86C"
+            BuildableName = "LyricsX Helper.app"
+            BlueprintName = "LyricsX Helper"
             ReferencedContainer = "container:Lyrics.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -74,9 +74,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "76C511581BEC6F8F0095F510"
-            BuildableName = "LyricsVox.app"
-            BlueprintName = "LyricsVox"
+            BlueprintIdentifier = "76D060411C02B8D8000DA86C"
+            BuildableName = "LyricsX Helper.app"
+            BlueprintName = "LyricsX Helper"
             ReferencedContainer = "container:Lyrics.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

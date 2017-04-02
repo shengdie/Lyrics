@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "76C511581BEC6F8F0095F510"
-               BuildableName = "LyricsX.app"
+               BuildableName = "LyricsXVLC.app"
                BlueprintName = "LyricsX"
                ReferencedContainer = "container:Lyrics.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "76C511581BEC6F8F0095F510"
-            BuildableName = "LyricsX.app"
+            BuildableName = "LyricsXVLC.app"
             BlueprintName = "LyricsX"
             ReferencedContainer = "container:Lyrics.xcodeproj">
          </BuildableReference>
@@ -56,7 +56,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "76C511581BEC6F8F0095F510"
-            BuildableName = "LyricsX.app"
+            BuildableName = "LyricsXVLC.app"
             BlueprintName = "LyricsX"
             ReferencedContainer = "container:Lyrics.xcodeproj">
          </BuildableReference>
@@ -75,7 +75,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "76C511581BEC6F8F0095F510"
-            BuildableName = "LyricsX.app"
+            BuildableName = "LyricsXVLC.app"
             BlueprintName = "LyricsX"
             ReferencedContainer = "container:Lyrics.xcodeproj">
          </BuildableReference>

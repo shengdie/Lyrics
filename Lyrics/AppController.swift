@@ -31,11 +31,9 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
     fileprivate var statusItem: NSStatusItem!
     fileprivate var lyricsArray: [LyricsLineModel]!
     fileprivate var idTagsArray: [String]!
-    fileprivate var iTunes: iTunesBridge!
+    fileprivate var VLC: VLCBridge!
     fileprivate var currentLyrics: String!
-    fileprivate var currentSongID: String!
     fileprivate var currentSongTitle: String!
-    fileprivate var currentArtist: String!
     fileprivate var lrcParser: LrcParser!
     fileprivate var songList: [SongInfos]!
     fileprivate var qianqian: QianQian!
@@ -54,7 +52,7 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
 // MARK: - Init & deinit
     override fileprivate init() {
         super.init()
-        iTunes = iTunesBridge()
+        VLC = VLCBridge()
         lrcParser = LrcParser()
         lyricsArray = Array()
         idTagsArray = Array()
@@ -81,7 +79,9 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
         checkLrcSavingPath()
         setupShortcuts()
         addNotificationObserver()
+        
         trackingStatusInitiation()
+        //ObserveVLCStatus()
     }
     
     deinit {
@@ -151,40 +151,78 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
         nc.addObserver(self, selector: #selector(handlePresetDidChanged), name: NSNotification.Name(rawValue: LyricsPresetDidChangedNotification), object: nil)
         
         let ndc = DistributedNotificationCenter.default()
-        ndc.addObserver(self, selector: #selector(iTunesPlayerInfoChanged(_:)), name: NSNotification.Name(rawValue: "com.apple.iTunes.playerInfo"), object: nil)
+        //ndc.addObserver(self, selector: #selector(VLCPlayerInfoChanged(_:)), name: NSNotification.Name(rawValue: "org.videolan.vlc.VLCMediaPlayerStateChanged"), object: nil)
         ndc.addObserver(self, selector: #selector(handleExtenalLyricsEvent(_:)), name: NSNotification.Name(rawValue: "ExtenalLyricsEvent"), object: nil)
     }
     
     fileprivate func trackingStatusInitiation() {
         currentLyrics = "LyricsX"
-        if iTunes.running() && iTunes.playing() {
-            currentSongID = iTunes.currentPersistentID()
-            currentSongTitle = iTunes.currentTitle()
-            currentArtist = iTunes.currentArtist()
+        if VLC.running() {
             
-            if currentSongID == "" {
-                // If iTunes is playing Apple Music, nothing can get from API,
-                // so, we should pause and then play to force iTunes send
-                // distributed notification.
-                iTunes.pause()
-                iTunes.play()
+            currentSongTitle = VLC.currentTitle()
+            
+            if currentSongTitle == ""{
+            
+                while (!VLC.playing()) {
+                    Thread.sleep(forTimeInterval: 2)
+                }
+                currentSongTitle = VLC.currentTitle()
+                DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async { () -> Void in
+                    self.handleSongChange()
+                }
+                
+                NSLog("Create new VLCTrackingThead")
+                //isTrackingRunning = true
+                DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async { () -> Void in
+                    self.VLCTrackingThread()
+                }
+
             }
             else {
                 DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async { () -> Void in
                     self.handleSongChange()
                 }
                 
-                NSLog("Create new iTunesTrackingThead")
-                isTrackingRunning = true
+                NSLog("Create new VLCTrackingThead")
+                //isTrackingRunning = true
                 DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async { () -> Void in
-                    self.iTunesTrackingThread()
+                    self.VLCTrackingThread()
                 }
             }
         }
         else {
-            currentSongID = ""
-            currentSongTitle = ""
-            currentArtist = ""
+            while(!VLC.running()) {
+                Thread.sleep(forTimeInterval: 2)
+            }
+            currentSongTitle = VLC.currentTitle()
+            
+            if currentSongTitle == ""{
+                while (!VLC.playing()) {
+                    Thread.sleep(forTimeInterval: 2)
+                }
+                currentSongTitle = VLC.currentTitle()
+                DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async { () -> Void in
+                    self.handleSongChange()
+                }
+                
+                NSLog("Create new VLCTrackingThead")
+                //isTrackingRunning = true
+                DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async { () -> Void in
+                    self.VLCTrackingThread()
+                }
+            }
+            else {
+                DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async { () -> Void in
+                    self.handleSongChange()
+                }
+                
+                NSLog("Create new VLCTrackingThead")
+                //isTrackingRunning = true
+                DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async { () -> Void in
+                    self.VLCTrackingThread()
+                }
+            }
+
         }
     }
     
@@ -227,9 +265,10 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: ShortcutMakeLrc) { () -> Void in
             self.makeLrc(nil)
         }
-        MASShortcutBinder.shared().bindShortcut(withDefaultsKey: ShortcutWriteLrcToiTunes) { () -> Void in
-            self.writeLyricsToiTunes(nil)
-        }
+        /*
+        MASShortcutBinder.shared().bindShortcut(withDefaultsKey: ShortcutWriteLrcToVLC) { () -> Void in
+            self.writeLyricsToVLC(nil)
+        }*/
     }
     
     fileprivate func increaseTimeDly() {
@@ -345,9 +384,9 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
     @IBAction func checkForUpdate(_ sender: AnyObject) {
         NSWorkspace.shared().open(URL(string: "https://github.com/MichaelRow/Lyrics/releases")!)
     }
-    
+    /*
     @IBAction func exportArtwork(_ sender: AnyObject) {
-        let artworkData: Data? = iTunes.artwork()
+        let artworkData: Data? = VLC.artwork()
         if artworkData == nil {
             MessageWindowController.sharedMsgWindow.displayMessage(NSLocalizedString("NO_ARTWORK", comment: ""))
             return
@@ -359,7 +398,7 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
         if panel.runModal() == NSFileHandlingPanelOKButton {
             try? artworkData!.write(to: panel.url!, options: [])
         }
-    }
+    }*/
     
     @IBAction func searchLyricsAndArtworks(_ sender: AnyObject?) {
         let appPath = Bundle.main.bundlePath + "/Contents/Library/LrcSeeker.app"
@@ -396,7 +435,7 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
     }
     
     @IBAction func copyLyricsWithTagsToPb(_ sender: AnyObject) {
-        let lrcContents = readLocalLyrics(currentSongTitle, theArtist: currentArtist)
+        let lrcContents = readLocalLyrics(currentSongTitle)
         if lrcContents != nil && lrcContents != "" {
             let pb = NSPasteboard.general()
             pb.clearContents()
@@ -418,12 +457,12 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
     }
     
     @IBAction func editLyrics(_ sender: AnyObject?) {
-        var lrcContents = readLocalLyrics(currentSongTitle, theArtist: currentArtist)
+        var lrcContents = readLocalLyrics(currentSongTitle)
         if lrcContents == nil {
             lrcContents = ""
         }
         let windowController = LyricsEditWindowController.sharedController
-        windowController.setLyricsContents(lrcContents!, songID: currentSongID, songTitle: currentSongTitle, andArtist: currentArtist)
+        windowController.setLyricsContents(lrcContents!, songID: "", songTitle: currentSongTitle, andArtist: "")
         if !windowController.window!.isVisible {
             windowController.showWindow(nil)
         }
@@ -433,8 +472,8 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
     
     @IBAction func importLrcFile(_ sender: AnyObject) { // 从本地导入歌词
         let songTitle: String = currentSongTitle
-        let artist: String = currentArtist
-        let songID: String = currentSongID
+        //let artist: String = currentArtist
+        //let songID: String = currentSongID
         let panel: NSOpenPanel = NSOpenPanel()
         panel.allowedFileTypes = ["lrc", "txt"]
         panel.isExtensionHidden = false
@@ -461,11 +500,11 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
                 lrcSourceHandleQueue.cancelAllOperations()
                 lrcSourceHandleQueue.addOperation({ () -> Void in
                     //make the current lrc the better one so that it can't be replaced.
-                    if songID == self.currentSongID {
+                    if songTitle == self.currentSongTitle {
                         self.parseCurrentLrc(lrcContents)
                         self.hasDiglossiaLrc = true
                     }
-                    self.saveLrcToLocal(lrcContents, songTitle: songTitle, artist: artist)
+                    self.saveLrcToLocal(lrcContents, songTitle: songTitle)
                 })
             }
         }
@@ -479,8 +518,8 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
             savingPath = userDefaults.string(forKey: LyricsUserSavingPath)!
         }
         let songTitle:String = currentSongTitle.replacingOccurrences(of: "/", with: "&")
-        let artist:String = currentArtist.replacingOccurrences(of: "/", with: "&")
-        let lrcFilePath = (savingPath as NSString).appendingPathComponent("\(songTitle) - \(artist).lrc")
+        //let artist:String = currentArtist.replacingOccurrences(of: "/", with: "&")
+        let lrcFilePath = (savingPath as NSString).appendingPathComponent("\(songTitle).lrc")
         
         let panel: NSSavePanel = NSSavePanel()
         panel.allowedFileTypes = ["lrc","txt"]
@@ -504,55 +543,10 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
         }
     }
     
-    @IBAction func writeLyricsToiTunes(_ sender: AnyObject?) {
-        if lyricsArray.count == 0 {
-            MessageWindowController.sharedMsgWindow.displayMessage(NSLocalizedString("OPERATION_FAILED", comment: ""))
-            return
-        } else {
-            var theLyrics: String = String()
-            for lrc in lyricsArray {
-                theLyrics.append(lrc.lyricsSentence + "\n")
-            }
-            iTunes.setLyrics(theLyrics)
-            MessageWindowController.sharedMsgWindow.displayMessage(NSLocalizedString("WROTE_TO_ITUNES", comment: ""))
-        }
-    }
-    
-    @IBAction func writeAllLyricsToiTunes(_ sender: AnyObject?) {
-        let skip: Bool
-        let alert = NSAlert()
-        alert.messageText = NSLocalizedString("OVERRIDE_OR_SKIP", comment: "")
-        alert.informativeText = NSLocalizedString("OVERRIDE_OR_SKIP_INTRO", comment: "")
-        alert.addButton(withTitle: NSLocalizedString("SKIP", comment: ""))
-        alert.addButton(withTitle: NSLocalizedString("OVERRIDE", comment: ""))
-        alert.addButton(withTitle: NSLocalizedString("CANCEL", comment: ""))
-        switch alert.runModal() {
-        case NSAlertFirstButtonReturn:
-            skip = true
-        case NSAlertSecondButtonReturn:
-            skip = false
-        default:
-            return
-        }
-        
-        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.low).async { () -> Void in
-            if self.iTunes.setAllLyrics(skip) {
-                DispatchQueue.main.async(execute: { () -> Void in
-                    MessageWindowController.sharedMsgWindow.displayMessage(NSLocalizedString("WROTE_TO_ITUNES", comment: ""))
-                })
-            }
-            else {
-                DispatchQueue.main.async(execute: { () -> Void in
-                    MessageWindowController.sharedMsgWindow.displayMessage(NSLocalizedString("OPERATION_FAILED", comment: ""))
-                })
-            }
-        }
-    }
-    
     @IBAction func wrongLyrics(_ sender: AnyObject) {
-        let songID = currentSongID
+        //let songID = currentSongID
         let songTitle = currentSongTitle
-        let artist = currentArtist
+        //let artist = currentArtist
         if !userDefaults.bool(forKey: LyricsDisableAllAlert) {
             let alert: NSAlert = NSAlert()
             alert.messageText = NSLocalizedString("CONFIRM_MARK_WRONG", comment: "")
@@ -565,7 +559,7 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
             }
         }
         let wrongLyricsTag: String = NSLocalizedString("WRONG_LYRICS", comment: "")
-        if songID == currentSongID {
+        if songTitle == currentSongTitle {
             lyricsArray.removeAll()
             currentLyrics = nil
             DispatchQueue.main.async { () -> Void in
@@ -573,7 +567,7 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
             }
         }
         DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async { 
-            self.saveLrcToLocal(wrongLyricsTag, songTitle: songTitle!, artist: artist!)
+            self.saveLrcToLocal(wrongLyricsTag, songTitle: songTitle!)
         }
     }
 
@@ -602,26 +596,59 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
         }
     }
     
-// MARK: - iTunes Events
+// MARK: - VLC Events
     
-    fileprivate func iTunesTrackingThread() {
-        // side node: iTunes update playerPosition once per second.
-        var iTunesPosition: Int = 0
+    fileprivate func VLCTrackingThread() {
+        // side node: VLC update playerPosition once per second.
+        var VLCPosition: Int = 0
         var currentPosition: Int = 0
-        //No need to track iTunes PlayerPosition when it's paused, just end the thread.
-        while iTunes.playing() {
+        
+        //No need to track VLC PlayerPosition when it's paused, just end the thread.
+        while VLC.playing() {
+            //isTrackingRunning = true
+            if(!isTrackingRunning) {
+                isTrackingRunning = true
+            }
             if lyricsArray.count != 0 {
-                iTunesPosition = iTunes.playerPosition()
-                if (currentPosition < iTunesPosition) || ((currentPosition / 1000) != (iTunesPosition / 1000) && currentPosition % 1000 < 850) {
-                    currentPosition = iTunesPosition
+                VLCPosition = VLC.playerPosition()
+                if (currentPosition < VLCPosition) || ((currentPosition / 1000) != (VLCPosition / 1000) && currentPosition % 1000 < 850) {
+                    currentPosition = VLCPosition
+                    let sonTitle = VLC.currentTitle()
+                    if(currentSongTitle != sonTitle)
+                    {
+                        if timeDly != timeDlyInFile {
+                            self.handleLrcDelayChange()
+                        }
+                        
+                        lyricsArray.removeAll()
+                        idTagsArray.removeAll()
+                        self.setValue(0, forKey: "timeDly")
+                        timeDlyInFile = 0
+                        currentLyrics = nil
+                        lyricsWindow.displayLyrics(nil, secondLyrics: nil)
+                        currentSongTitle = sonTitle
+                        if currentSongTitle != "" {
+                            NSLog("Song Changed to: %@",currentSongTitle)
+                            DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async(execute: { () -> Void in
+                                self.handleSongChange()
+                            })
+                            while (lyricsArray.count == 0) {
+                                // wait on new lyrics loading
+                                Thread.sleep(forTimeInterval: 0.1)
+                            }
+                        } else {
+                            NSLog("VLC Stopped")
+                        }
+                    }
                 }
+                
                 DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async(execute: { () -> Void in
-                    self.handlePositionChange(iTunesPosition)
+                    self.handlePositionChange(VLCPosition)
                 })
             }
             Thread.sleep(forTimeInterval: 0.15)
             currentPosition += 150
-        }
+        } //while playing
         if userDefaults.bool(forKey: LyricsDisabledWhenPaused) {
             self.currentLyrics = nil
             DispatchQueue.main.async(execute: { () -> Void in
@@ -631,77 +658,124 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
                 }
             })
         }
-        NSLog("iTunesTrackingThread Ended")
+        NSLog("VLCTrackingThread Ended")
         isTrackingRunning=false
+        while (VLC.running()) {
+            while (!VLC.playing()) {
+                Thread.sleep(forTimeInterval: 1)
+            }
+            while (VLC.playing()) {
+                if(!isTrackingRunning) {
+                    isTrackingRunning = true
+                }
+                if lyricsArray.count != 0 {
+                    VLCPosition = VLC.playerPosition()
+                    if (currentPosition < VLCPosition) || ((currentPosition / 1000) != (VLCPosition / 1000) && currentPosition % 1000 < 850) {
+                        currentPosition = VLCPosition
+                        let sonTitle = VLC.currentTitle()
+                        if(currentSongTitle != sonTitle)
+                        {
+                            if timeDly != timeDlyInFile {
+                                self.handleLrcDelayChange()
+                            }
+                            
+                            lyricsArray.removeAll()
+                            idTagsArray.removeAll()
+                            self.setValue(0, forKey: "timeDly")
+                            timeDlyInFile = 0
+                            currentLyrics = nil
+                            lyricsWindow.displayLyrics(nil, secondLyrics: nil)
+                            currentSongTitle = sonTitle
+                            if currentSongTitle != "" {
+                                NSLog("Song Changed to: %@",currentSongTitle)
+                                DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async(execute: { () -> Void in
+                                    self.handleSongChange()
+                                })
+                                while (lyricsArray.count == 0) {
+                                    // wait on new lyrics loading
+                                    Thread.sleep(forTimeInterval: 0.1)
+                                }
+                            } else {
+                                NSLog("VLC Stopped")
+                            }
+                        }
+                    }
+                    
+                    DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async(execute: { () -> Void in
+                        self.handlePositionChange(VLCPosition)
+                    })
+                }
+                Thread.sleep(forTimeInterval: 0.15)
+                currentPosition += 150
+            }//while playing
+            if(isTrackingRunning) {
+                if userDefaults.bool(forKey: LyricsDisabledWhenPaused) {
+                    self.currentLyrics = nil
+                    DispatchQueue.main.async(execute: { () -> Void in
+                        self.lyricsWindow.displayLyrics(nil, secondLyrics: nil)
+                        if self.menuBarLyrics != nil {
+                            self.menuBarLyrics.displayLyrics(nil)
+                        }
+                    })
+                }
+                NSLog("VLCTrackingThread Ended")
+                isTrackingRunning=false
+            }
+
+        }// while running
+        if timer != nil {
+            timer.invalidate()
+        }
+        terminate()
+        
+        
     }
-    
-    
-    func iTunesPlayerInfoChanged (_ n:Notification) {
-        let userInfo = (n as NSNotification).userInfo
-        if userInfo == nil {
+    /*
+    func VLCPlayerInfoChanged () {
+        /*
+        if(!VLC.running()) {
+            //currentSongID = ""
+            currentSongTitle = ""
+            //currentArtist = ""
+            if timer != nil {
+                timer.invalidate()
+            }
+            timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(terminate), userInfo: nil, repeats: false)
             return
         }
-        else {
-            if userInfo!["Player State"] as! String == "Paused" {
-                NSLog("iTunes Paused")
-                if userDefaults.bool(forKey: LyricsQuitWithITunes) {
-                    // iTunes would paused before it quitted, so we should check whether iTunes is running
-                    // seconds later when playing or paused.
-                    if timer != nil {
-                        timer.invalidate()
-                    }
-                    timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(terminate), userInfo: nil, repeats: false)
-                }
-                return
-            }
-            else if userInfo!["Player State"] as! String == "Playing" {
-                //iTunes is playing now, we should create the tracking thread if not exists.
-                if !isTrackingRunning {
-                    NSLog("Create new iTunesTrackingThead")
-                    isTrackingRunning = true
-                    DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async { () -> Void in
-                        self.iTunesTrackingThread()
-                    }
-                }
-                NSLog("iTunes Playing")
-            }
-            else if userInfo!["Player State"] as! String == "Stopped" {
-                // iTunes send this player state when quit in some case.
-                currentSongID = ""
-                currentSongTitle = ""
-                currentArtist = ""
+        
+        if(!VLC.playing()) {
+            if userDefaults.bool(forKey: LyricsQuitWithVLC) {
+                // VLC would paused before it quitted, so we should check whether vox is running
+                // seconds later when playing or paused.
                 if timer != nil {
                     timer.invalidate()
                 }
                 timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(terminate), userInfo: nil, repeats: false)
-                return
             }
-            
+            return
+        } else {*/
+        if(!VLC.playing()) {
+            return
+        }
+            if !isTrackingRunning {
+                NSLog("Create new VLCTrackingThead")
+                isTrackingRunning = true
+                DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async { () -> Void in
+                    self.VLCTrackingThread()
+                }
+            }
+            NSLog("vox Playing")
+        //}
+        
             // Get infos from userinfo if can't get them from API.
-            var songID: String = iTunes.currentPersistentID()
-            var songTitle: String = iTunes.currentTitle()
-            var artist: String = iTunes.currentArtist()
-            if songID == "" {
-                let aSongID = userInfo!["PersistentID"]
-                if aSongID != nil {
-                    songID = (aSongID as! NSNumber).stringValue
-                }
-            }
-            if songTitle == "" {
-                let aSongTitle = userInfo!["Name"]
-                if aSongTitle != nil {
-                    songTitle = aSongTitle as! String
-                }
-            }
-            if artist == "" {
-                let aArtist = userInfo!["Artist"]
-                if aArtist != nil {
-                    artist = aArtist as! String
-                }
-            }
-            
+            //var songID: String = VLC.currentPersistentID()
+        
+        let songTitle: String = VLC.currentTitle()
+            //var artist: String = VLC.currentArtist()
+        
             // Check whether song is changed.
-            if currentSongID == songID {
+            if currentSongTitle == songTitle {
                 return
             } else {
                 //if time-Delay for the previous song is changed, we should save the change to lrc file.
@@ -716,20 +790,20 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
                 timeDlyInFile = 0
                 currentLyrics = nil
                 lyricsWindow.displayLyrics(nil, secondLyrics: nil)
-                currentSongID = songID
+                //currentSongID = songID
                 currentSongTitle = songTitle
-                currentArtist = artist
-                if currentSongID != "" {
+                //currentArtist = artist
+                if currentSongTitle != "" {
                     NSLog("Song Changed to: %@",currentSongTitle)
                     DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async(execute: { () -> Void in
                         self.handleSongChange()
                     })
                 } else {
-                    NSLog("iTunes Stopped")
+                    NSLog("VLC Stopped")
                 }
             }
-        }
-    }
+        
+    }*/
 
 // MARK: - Lrc Methods
     
@@ -758,7 +832,7 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
         }
         
         if userDefaults.bool(forKey: LyricsEnableFilter) {
-            lrcParser.parseWithFilter(lrcToParse, iTunesTitle: currentSongTitle, iTunesAlbum: iTunes.currentAlbum())
+            lrcParser.parseWithFilter(lrcToParse, VLCTitle: currentSongTitle, VLCAlbum: "")
         }
         else {
             lrcParser.regularParse(lrcToParse)
@@ -770,7 +844,7 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
         lrcParser.cleanCache()
     }
 
-    fileprivate func saveLrcToLocal (_ lyricsContents: String, songTitle: String, artist: String) { // 将lrc保存到本地
+    fileprivate func saveLrcToLocal (_ lyricsContents: String, songTitle: String) { // 将lrc保存到本地
         let savingPath: String
         if userDefaults.integer(forKey: LyricsSavingPathPopUpIndex) == 0 {
             savingPath = NSSearchPathForDirectoriesInDomains(.musicDirectory, [.userDomainMask], true).first! + "/LyricsX"
@@ -793,9 +867,12 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
             }
         }
         
+        
         let titleForSaving = songTitle.replacingOccurrences(of: "/", with: "&")
-        let artistForSaving = artist.replacingOccurrences(of: "/", with: "&")
-        let lrcFilePath = (savingPath as NSString).appendingPathComponent("\(titleForSaving) - \(artistForSaving).lrc")
+        //let endIndex = titleForSaving.index(titleForSaving.endIndex, offsetBy: -4)
+        //titleForSaving = titleForSaving.substring(to: endIndex)
+        //let artistForSaving = artist.replacingOccurrences(of: "/", with: "&")
+        let lrcFilePath = (savingPath as NSString).appendingPathComponent("\(titleForSaving).lrc")
         
         if fm.fileExists(atPath: lrcFilePath) {
             do {
@@ -812,7 +889,7 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
         }
     }
     
-    func readLocalLyrics(_ theTitle: String, theArtist: String) -> String? {
+    func readLocalLyrics(_ theTitle: String) -> String? {
         let savingPath: String
         if userDefaults.integer(forKey: LyricsSavingPathPopUpIndex) == 0 {
             savingPath = NSSearchPathForDirectoriesInDomains(.musicDirectory, [.userDomainMask], true).first! + "/LyricsX"
@@ -820,9 +897,11 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
             savingPath = userDefaults.string(forKey: LyricsUserSavingPath)!
         }
         let songTitle: String = theTitle.replacingOccurrences(of: "/", with: "&")
-        let artist: String = theArtist.replacingOccurrences(of: "/", with: "&")
-        let lrcFilePath = (savingPath as NSString).appendingPathComponent("\(songTitle) - \(artist).lrc")
-        let lrcFilePathLocal = (savingPath as NSString).appendingPathComponent("\(songTitle).lrc")
+        //let endIndex = songTitle.index(songTitle.endIndex, offsetBy: -4)
+        //songTitle = songTitle.substring(to: endIndex)
+        //let artist: String = theArtist.replacingOccurrences(of: "/", with: "&")
+        let lrcFilePath = (savingPath as NSString).appendingPathComponent("\(songTitle).lrc")
+        //let lrcFilePathLocal = (savingPath as NSString).appendingPathComponent("\(songTitle).lrc")
         if  FileManager.default.fileExists(atPath: lrcFilePath) {
             let lrcContents: String?
             do {
@@ -833,16 +912,7 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
             }
             return lrcContents
         }
-        else if FileManager.default.fileExists(atPath: lrcFilePathLocal) {
-            let lrcContents: String?
-            do {
-                lrcContents = try String(contentsOfFile: lrcFilePathLocal, encoding: String.Encoding.utf8)
-            } catch {
-                lrcContents = nil
-                NSLog("Failed to load lrc")
-            }
-            return lrcContents
-        } else {
+        else {
             return nil
         }
     }
@@ -947,7 +1017,7 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
     func handleSongChange() {
         //load lyrics for the song which is about to play
         lrcSourceHandleQueue.cancelAllOperations()
-        let lrcContents: String? = readLocalLyrics(currentSongTitle, theArtist: currentArtist)
+        let lrcContents: String? = readLocalLyrics(currentSongTitle)
         if lrcContents != nil {
             parseCurrentLrc(lrcContents!)
             if lyricsArray.count != 0 {
@@ -956,22 +1026,22 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
         }
         
         //Search in the Net if local lrc is nil or invalid
-        let loadingSongID: String = currentSongID
-        let loadingArtist: String = currentArtist
+        //let loadingSongID: String = currentSongID
+        //let loadingArtist: String = currentArtist
         let loadingTitle: String = currentSongTitle
         hasDiglossiaLrc = false
         
-        let artistForSearching: String = self.delSpecificSymbol(loadingArtist)
+        //let artistForSearching: String = self.delSpecificSymbol(loadingArtist)
         let titleForSearching: String = self.delSpecificSymbol(loadingTitle)
         
-        //千千静听不支持繁体中文搜索，先转成简体中文。搜歌词组件参数是iTunes中显示的歌曲名
-        //歌手名以及iTunes的唯一编号（防止歌曲变更造成的歌词对错歌），以及用于搜索用的歌曲
+        //千千静听不支持繁体中文搜索，先转成简体中文。搜歌词组件参数是VLC中显示的歌曲名
+        //歌手名以及VLC的唯一编号（防止歌曲变更造成的歌词对错歌），以及用于搜索用的歌曲
         //名与歌手名。另外，天天动听/QQ只会获取歌词文本，其他歌词源都是获取歌词URL
-        qianqian.getLyricsWithTitle(loadingTitle, artist: loadingArtist, songID: loadingSongID, titleForSearching: convertToSC(titleForSearching), andArtistForSearching: convertToSC(artistForSearching))
-        xiami.getLyricsWithTitle(loadingTitle, artist: loadingArtist, songID: loadingSongID, titleForSearching: titleForSearching, andArtistForSearching: artistForSearching)
-        ttpod.getLyricsWithTitle(loadingTitle, artist: loadingArtist, songID: loadingSongID, titleForSearching: titleForSearching, andArtistForSearching: artistForSearching)
-        geciMe.getLyricsWithTitle(loadingTitle, artist: loadingArtist, songID: loadingSongID, titleForSearching: titleForSearching, andArtistForSearching: artistForSearching)
-        qqMusic.getLyricsWithTitle(loadingTitle, artist: loadingArtist, songID: loadingSongID, titleForSearching: titleForSearching, andArtistForSearching: artistForSearching)
+        qianqian.getLyricsWithTitle(loadingTitle, artist: "", songID: "", titleForSearching: convertToSC(titleForSearching), andArtistForSearching: "")
+        xiami.getLyricsWithTitle(loadingTitle, artist: "", songID: "", titleForSearching: titleForSearching, andArtistForSearching: "")
+        ttpod.getLyricsWithTitle(loadingTitle, artist: "", songID: "", titleForSearching: titleForSearching, andArtistForSearching: "")
+        geciMe.getLyricsWithTitle(loadingTitle, artist: "", songID: "", titleForSearching: titleForSearching, andArtistForSearching: "")
+        qqMusic.getLyricsWithTitle(loadingTitle, artist: "", songID: "", titleForSearching: titleForSearching, andArtistForSearching: "")
     }
     
     func handleUserEditLyrics(_ n: Notification) {
@@ -982,12 +1052,12 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
             //User lrc has the highest priority level
             lrcSourceHandleQueue.cancelAllOperations()
             lrcSourceHandleQueue.addOperation { () -> Void in
-                if (userInfo["SongID"] as! String) == self.currentSongID {
+                if (userInfo["SongTitle"] as! String) == self.currentSongTitle {
                     //make the current lrc the better one so that it can't be replaced.
                     self.hasDiglossiaLrc = true
                     self.parseCurrentLrc(lyrics)
                 }
-                self.saveLrcToLocal(lyrics, songTitle: userInfo["SongTitle"] as! String, artist: userInfo["SongArtist"] as! String)
+                self.saveLrcToLocal(lyrics, songTitle: userInfo["SongTitle"] as! String)
             }
         }
     }
@@ -996,7 +1066,7 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
         let userInfo = (n as NSNotification).userInfo
         
         //no playing track?
-        if currentSongID == "" {
+        if currentSongTitle == "" {
             let notification: NSUserNotification = NSUserNotification()
             notification.title = NSLocalizedString("NO_PLAYING_TRACK", comment: "")
             notification.informativeText = String(format: NSLocalizedString("IGNORE_LYRICS", comment: ""), userInfo!["Sender"] as! String)
@@ -1012,7 +1082,7 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
                 self.parseCurrentLrc(lyricsContents)
                 //make the current lrc the better one so that it can't be replaced.
                 self.hasDiglossiaLrc = true
-                self.saveLrcToLocal(lyricsContents, songTitle: self.currentSongTitle, artist: self.currentArtist)
+                self.saveLrcToLocal(lyricsContents, songTitle: self.currentSongTitle)
             }
         }
     }
@@ -1035,7 +1105,7 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
         }
         NSLog("Writing the time delay to file")
         DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async { 
-            self.saveLrcToLocal(theLyrics, songTitle: self.currentSongTitle, artist: self.currentArtist)
+            self.saveLrcToLocal(theLyrics, songTitle: self.currentSongTitle)
         }
     }
     
@@ -1159,17 +1229,17 @@ class AppController: NSObject, NSUserNotificationCenterDelegate {
             hasDiglossiaLrc = true
         }
         if hasLrc {
-            if songID == currentSongID {
+            if songTitle == currentSongTitle {
                 parseCurrentLrc(lyricsContents)
             }
-            saveLrcToLocal(lyricsContents, songTitle: songTitle, artist: artist)
+            saveLrcToLocal(lyricsContents, songTitle: songTitle)
         }
     }
     
 // MARK: - Other Methods
     
     func terminate() {
-        if !iTunes.running() {
+        if !VLC.running() {
             NSApplication.shared().terminate(nil)
         }
     }

@@ -23,11 +23,9 @@
 		763763CC1C292957003EB0B5 /* MASShortcut.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 763763C71C292754003EB0B5 /* MASShortcut.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7642B9011BF45B0100D68FE9 /* LyricsLineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7642B9001BF45B0100D68FE9 /* LyricsLineModel.swift */; };
 		7642B9041BF4709300D68FE9 /* StatusMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7642B9021BF4709300D68FE9 /* StatusMenu.xib */; };
-		764334931BF95ECF00C4B740 /* iTunesBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 764334921BF95ECF00C4B740 /* iTunesBridge.m */; };
 		764B0A831C30D1600048419B /* QQMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764B0A811C30D1600048419B /* QQMusic.swift */; };
 		764B0A841C30D1600048419B /* XMLParserForQQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764B0A821C30D1600048419B /* XMLParserForQQ.swift */; };
 		7660C5021BF05471002E3204 /* DesktopLyricsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7660C5011BF05471002E3204 /* DesktopLyricsController.swift */; };
-		766D670F1C03530E00B5405B /* iTunesBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 766D670E1C03530E00B5405B /* iTunesBridge.m */; };
 		766F03C51C049372003F4790 /* LyricsEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F03C41C049372003F4790 /* LyricsEditView.swift */; };
 		7678AA081BFF526700FE848C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7678AA061BFF526700FE848C /* Localizable.strings */; };
 		768203AF1C2B6FA900DB93F0 /* MenuBarLyrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768203AE1C2B6FA900DB93F0 /* MenuBarLyrics.swift */; };
@@ -62,11 +60,7 @@
 		76C511621BEC6F8F0095F510 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76C511601BEC6F8F0095F510 /* MainMenu.xib */; };
 		76C511781BEC6FD50095F510 /* GlobalConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C511771BEC6FD50095F510 /* GlobalConst.swift */; };
 		76CE31821CA6BC8F00F1497B /* FilterString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CE31811CA6BC8F00F1497B /* FilterString.swift */; };
-		76D060451C02B8D8000DA86C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D060441C02B8D8000DA86C /* AppDelegate.swift */; };
-		76D060471C02B8D9000DA86C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76D060461C02B8D9000DA86C /* Assets.xcassets */; };
-		76D0604A1C02B8D9000DA86C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76D060481C02B8D9000DA86C /* MainMenu.xib */; };
 		76D0605E1C02B930000DA86C /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76D0605D1C02B930000DA86C /* ServiceManagement.framework */; };
-		76D060601C02BBB7000DA86C /* LyricsX Helper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 76D060421C02B8D8000DA86C /* LyricsX Helper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		76D0606B1C02FBCD000DA86C /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 768BCAE31BF185AD00D6F5EB /* ScriptingBridge.framework */; };
 		76E0D22B1C42407A00946E63 /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E0D2291C42407A00946E63 /* AboutWindowController.swift */; };
 		76E0D22D1C42575900946E63 /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76E0D22F1C42575900946E63 /* AboutWindow.xib */; };
@@ -78,6 +72,7 @@
 		76FDF20A1C8B0D18006C3AB8 /* 关于双语歌词编辑工具.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 76FDF2091C8B0D18006C3AB8 /* 关于双语歌词编辑工具.pdf */; };
 		76FE94411BFC223600A1AC27 /* TextPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FE94401BFC223600A1AC27 /* TextPreview.swift */; };
 		76FF43791BEF9BAB00D2B14F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76FF43781BEF9BAB00D2B14F /* QuartzCore.framework */; };
+		E47F52341E8F7D7B00419866 /* VLCBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = E47F52331E8F7D7B00419866 /* VLCBridge.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -97,7 +92,6 @@
 			dstPath = Contents/Library/LoginItems;
 			dstSubfolderSpec = 1;
 			files = (
-				76D060601C02BBB7000DA86C /* LyricsX Helper.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,19 +132,12 @@
 		763763C71C292754003EB0B5 /* MASShortcut.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MASShortcut.framework; sourceTree = "<group>"; };
 		7642B9001BF45B0100D68FE9 /* LyricsLineModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LyricsLineModel.swift; sourceTree = "<group>"; };
 		7642B9031BF4709300D68FE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/StatusMenu.xib; sourceTree = "<group>"; };
-		7642B9061BF488AB00D68FE9 /* iTunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunes.h; sourceTree = "<group>"; };
-		764334911BF95ECF00C4B740 /* iTunesBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunesBridge.h; sourceTree = "<group>"; };
-		764334921BF95ECF00C4B740 /* iTunesBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iTunesBridge.m; sourceTree = "<group>"; };
 		764B0A811C30D1600048419B /* QQMusic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QQMusic.swift; sourceTree = "<group>"; };
 		764B0A821C30D1600048419B /* XMLParserForQQ.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLParserForQQ.swift; sourceTree = "<group>"; };
 		76576DD31CE3440F00817291 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/StatusMenu.strings"; sourceTree = "<group>"; };
 		76576DD41CE3441700817291 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/StatusMenu.strings"; sourceTree = "<group>"; };
 		765B7F8A1C2E3B320066F2B4 /* NSStatusBar+NSStatusBar_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSStatusBar+NSStatusBar_Private.h"; sourceTree = "<group>"; };
 		7660C5011BF05471002E3204 /* DesktopLyricsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesktopLyricsController.swift; sourceTree = "<group>"; };
-		766D670B1C03530D00B5405B /* LyricsX Helper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LyricsX Helper-Bridging-Header.h"; sourceTree = "<group>"; };
-		766D670C1C03530E00B5405B /* iTunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunes.h; sourceTree = "<group>"; };
-		766D670D1C03530E00B5405B /* iTunesBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunesBridge.h; sourceTree = "<group>"; };
-		766D670E1C03530E00B5405B /* iTunesBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iTunesBridge.m; sourceTree = "<group>"; };
 		766F03C41C049372003F4790 /* LyricsEditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LyricsEditView.swift; sourceTree = "<group>"; };
 		7678AA071BFF526700FE848C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7678AA091BFF552700FE848C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -184,7 +171,7 @@
 		76C047171BF2E335005053AC /* DBPrefsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBPrefsWindowController.h; sourceTree = "<group>"; };
 		76C047181BF2E335005053AC /* DBPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBPrefsWindowController.m; sourceTree = "<group>"; };
 		76C047251BF2F34C005053AC /* AppPrefsWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppPrefsWindowController.swift; sourceTree = "<group>"; };
-		76C511591BEC6F8F0095F510 /* LyricsX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LyricsX.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		76C511591BEC6F8F0095F510 /* LyricsXVLC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LyricsXVLC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76C5115C1BEC6F8F0095F510 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76C5115E1BEC6F8F0095F510 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		76C511611BEC6F8F0095F510 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -192,10 +179,6 @@
 		76C511771BEC6FD50095F510 /* GlobalConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalConst.swift; sourceTree = "<group>"; };
 		76CE31811CA6BC8F00F1497B /* FilterString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterString.swift; sourceTree = "<group>"; };
 		76D060421C02B8D8000DA86C /* LyricsX Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LyricsX Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		76D060441C02B8D8000DA86C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		76D060461C02B8D9000DA86C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		76D060491C02B8D9000DA86C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		76D0604B1C02B8D9000DA86C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76D0605D1C02B930000DA86C /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		76D060681C02E997000DA86C /* Lyrics-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lyrics-Prefix.pch"; sourceTree = "<group>"; };
 		76D060741C03221B000DA86C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/Preferences.xib"; sourceTree = "<group>"; };
@@ -212,6 +195,9 @@
 		76FDF2091C8B0D18006C3AB8 /* 关于双语歌词编辑工具.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "关于双语歌词编辑工具.pdf"; sourceTree = "<group>"; };
 		76FE94401BFC223600A1AC27 /* TextPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextPreview.swift; sourceTree = "<group>"; };
 		76FF43781BEF9BAB00D2B14F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E47F52301E8E5DAB00419866 /* VLC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLC.h; sourceTree = "<group>"; };
+		E47F52321E8F7D3600419866 /* VLCBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLCBridge.h; sourceTree = "<group>"; };
+		E47F52331E8F7D7B00419866 /* VLCBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLCBridge.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -357,7 +343,7 @@
 		765FC4A71BEE511D00BF3706 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				7642B9061BF488AB00D68FE9 /* iTunes.h */,
+				E47F52301E8E5DAB00419866 /* VLC.h */,
 				768BCB271BF1C69D00D6F5EB /* opencc.h */,
 				765B7F8A1C2E3B320066F2B4 /* NSStatusBar+NSStatusBar_Private.h */,
 				768BCAE51BF1866400D6F5EB /* Lyrics-Bridging-Header.h */,
@@ -400,13 +386,13 @@
 		768BCB411BF1C81200D6F5EB /* Other Source */ = {
 			isa = PBXGroup;
 			children = (
+				E47F52331E8F7D7B00419866 /* VLCBridge.m */,
+				E47F52321E8F7D3600419866 /* VLCBridge.h */,
 				7642B9001BF45B0100D68FE9 /* LyricsLineModel.swift */,
 				76CE31811CA6BC8F00F1497B /* FilterString.swift */,
 				76251C691CA5336D00B9F049 /* LrcParser.swift */,
 				768BCB421BF1C84B00D6F5EB /* ChineseConverter.swift */,
 				76C511771BEC6FD50095F510 /* GlobalConst.swift */,
-				764334911BF95ECF00C4B740 /* iTunesBridge.h */,
-				764334921BF95ECF00C4B740 /* iTunesBridge.m */,
 			);
 			name = "Other Source";
 			sourceTree = "<group>";
@@ -415,7 +401,6 @@
 			isa = PBXGroup;
 			children = (
 				76C5115B1BEC6F8F0095F510 /* Lyrics */,
-				76D060431C02B8D8000DA86C /* LyricsX Helper */,
 				764B0A801C30D0F00048419B /* Build-In Apps */,
 				76C5115A1BEC6F8F0095F510 /* Products */,
 			);
@@ -424,7 +409,7 @@
 		76C5115A1BEC6F8F0095F510 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				76C511591BEC6F8F0095F510 /* LyricsX.app */,
+				76C511591BEC6F8F0095F510 /* LyricsXVLC.app */,
 				76D060421C02B8D8000DA86C /* LyricsX Helper.app */,
 			);
 			name = Products;
@@ -444,21 +429,6 @@
 				765FC4A01BEE4F5800BF3706 /* Support Files */,
 			);
 			path = Lyrics;
-			sourceTree = "<group>";
-		};
-		76D060431C02B8D8000DA86C /* LyricsX Helper */ = {
-			isa = PBXGroup;
-			children = (
-				76D060441C02B8D8000DA86C /* AppDelegate.swift */,
-				766D670C1C03530E00B5405B /* iTunes.h */,
-				766D670D1C03530E00B5405B /* iTunesBridge.h */,
-				766D670E1C03530E00B5405B /* iTunesBridge.m */,
-				766D670B1C03530D00B5405B /* LyricsX Helper-Bridging-Header.h */,
-				76D060461C02B8D9000DA86C /* Assets.xcassets */,
-				76D060481C02B8D9000DA86C /* MainMenu.xib */,
-				76D0604B1C02B8D9000DA86C /* Info.plist */,
-			);
-			path = "LyricsX Helper";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -481,7 +451,7 @@
 			);
 			name = LyricsX;
 			productName = Lyrics;
-			productReference = 76C511591BEC6F8F0095F510 /* LyricsX.app */;
+			productReference = 76C511591BEC6F8F0095F510 /* LyricsXVLC.app */;
 			productType = "com.apple.product-type.application";
 		};
 		76D060411C02B8D8000DA86C /* LyricsX Helper */ = {
@@ -578,8 +548,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76D060471C02B8D9000DA86C /* Assets.xcassets in Resources */,
-				76D0604A1C02B8D9000DA86C /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,7 +559,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76C047261BF2F34C005053AC /* AppPrefsWindowController.swift in Sources */,
-				764334931BF95ECF00C4B740 /* iTunesBridge.m in Sources */,
+				E47F52341E8F7D7B00419866 /* VLCBridge.m in Sources */,
 				76FE94411BFC223600A1AC27 /* TextPreview.swift in Sources */,
 				760A018A1C01A36700015C62 /* QianQian.m in Sources */,
 				7660C5021BF05471002E3204 /* DesktopLyricsController.swift in Sources */,
@@ -626,8 +594,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				766D670F1C03530E00B5405B /* iTunesBridge.m in Sources */,
-				76D060451C02B8D8000DA86C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -678,14 +644,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				76C511611BEC6F8F0095F510 /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-		76D060481C02B8D9000DA86C /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				76D060491C02B8D9000DA86C /* Base */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -810,9 +768,9 @@
 					"$(PROJECT_DIR)/Lyrics",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_BUNDLE_IDENTIFIER = Eru.Lyrics;
+				PRODUCT_BUNDLE_IDENTIFIER = Eru.LyricsVLC;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = LyricsXVLC;
 				SWIFT_OBJC_BRIDGING_HEADER = "Lyrics/Lyrics-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -838,9 +796,9 @@
 					"$(PROJECT_DIR)/Lyrics",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_BUNDLE_IDENTIFIER = Eru.Lyrics;
+				PRODUCT_BUNDLE_IDENTIFIER = Eru.LyricsVLC;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = LyricsXVLC;
 				SWIFT_OBJC_BRIDGING_HEADER = "Lyrics/Lyrics-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

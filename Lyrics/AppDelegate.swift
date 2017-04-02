@@ -31,7 +31,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             LyricsAutoLaunches : NSNumber(value: true as Bool),
             LyricsLaunchTpyePopUpIndex : NSNumber(value: 2 as Int),
             LyricsServerIndex : NSNumber(value: 0 as Int),
-            LyricsQuitWithITunes : NSNumber(value: false as Bool),
+            LyricsQuitWithVLC : NSNumber(value: false as Bool),
             LyricsDisableAllAlert : NSNumber(value: false as Bool),
             LyricsUseAutoLayout : NSNumber(value: true as Bool),
             LyricsHeightFromDockToLyrics : NSNumber(value: 10 as Int),

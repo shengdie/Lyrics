@@ -148,7 +148,7 @@ class LrcParser: NSObject {
         lyrics = tempLyrics
     }
     
-    func parseWithFilter(_ lrcContents: String, iTunesTitle: String?, iTunesAlbum: String?) {
+    func parseWithFilter(_ lrcContents: String, VLCTitle: String?, VLCAlbum: String?) {
         NSLog("Start to Parse lrc")
         cleanCache()
         
@@ -226,14 +226,14 @@ class LrcParser: NSObject {
         let directFilter = NSKeyedUnarchiver.unarchiveObject(with: userDefaults.data(forKey: LyricsDirectFilterKey)!) as! [FilterString]
         let conditionalFilter = NSKeyedUnarchiver.unarchiveObject(with: userDefaults.data(forKey: LyricsConditionalFilterKey)!) as! [FilterString]
         let isIDTagTitleAlbumSimillar: Bool = (title.range(of: album) != nil) || (album.range(of: title) != nil)
-        let isiTunesTitleAlbumSimillar: Bool
-        if iTunesTitle != nil && iTunesAlbum != nil {
-            isiTunesTitleAlbumSimillar = (iTunesTitle!.range(of: iTunesAlbum!) != nil) || (iTunesAlbum!.range(of: iTunesTitle!) != nil)
+        let isVLCTitleAlbumSimillar: Bool
+        if VLCTitle != nil && VLCAlbum != nil {
+            isVLCTitleAlbumSimillar = (VLCTitle!.range(of: VLCAlbum!) != nil) || (VLCAlbum!.range(of: VLCTitle!) != nil)
         }
         else {
-            isiTunesTitleAlbumSimillar = false
+            isVLCTitleAlbumSimillar = false
         }
-        let isTitleAlbumSimillar: Bool = isIDTagTitleAlbumSimillar || isiTunesTitleAlbumSimillar
+        let isTitleAlbumSimillar: Bool = isIDTagTitleAlbumSimillar || isVLCTitleAlbumSimillar
         var prevLrcType: LrcType = .lyrics
         var emptyLine: Int = 0
         var lastTitleAlbumSimillarIdx = -1
@@ -319,34 +319,34 @@ class LrcParser: NSObject {
                     }
                 }
                 
-                let hasiTunesTitle: Bool
-                if iTunesTitle == nil {
-                    hasiTunesTitle = false
+                let hasVLCTitle: Bool
+                if VLCTitle == nil {
+                    hasVLCTitle = false
                 }
                 else {
-                    hasiTunesTitle = (line.range(of: iTunesTitle!, options: [.caseInsensitive], range: nil, locale: nil) != nil) || (iTunesTitle!.range(of: line, options: [.caseInsensitive], range: nil, locale: nil) != nil)
-                    if !ignoreTitle && hasiTunesTitle {
-                        if line.characters.count/iTunesTitle!.characters.count > 4 {
+                    hasVLCTitle = (line.range(of: VLCTitle!, options: [.caseInsensitive], range: nil, locale: nil) != nil) || (VLCTitle!.range(of: line, options: [.caseInsensitive], range: nil, locale: nil) != nil)
+                    if !ignoreTitle && hasVLCTitle {
+                        if line.characters.count/VLCTitle!.characters.count > 4 {
                             ignoreTitle = true
                         }
                     }
                 }
                 
-                let hasiTunesAlbum: Bool
-                if iTunesAlbum == nil {
-                    hasiTunesAlbum = false
+                let hasVLCAlbum: Bool
+                if VLCAlbum == nil {
+                    hasVLCAlbum = false
                 }
                 else {
-                    hasiTunesAlbum = (line.range(of: iTunesAlbum!, options: [.caseInsensitive], range: nil, locale: nil) != nil) || (iTunesAlbum!.range(of: line, options: [.caseInsensitive], range: nil, locale: nil) != nil)
-                    if !ignoreAlbum && hasiTunesAlbum {
-                        if line.characters.count/iTunesAlbum!.characters.count > 4 {
+                    hasVLCAlbum = (line.range(of: VLCAlbum!, options: [.caseInsensitive], range: nil, locale: nil) != nil) || (VLCAlbum!.range(of: line, options: [.caseInsensitive], range: nil, locale: nil) != nil)
+                    if !ignoreAlbum && hasVLCAlbum {
+                        if line.characters.count/VLCAlbum!.characters.count > 4 {
                             ignoreAlbum = true
                         }
                     }
                 }
                 
-                let hasTitle: Bool = hasIDTagTitle || hasiTunesTitle
-                let hasAlbum: Bool = hasIDTagAlbum || hasiTunesAlbum
+                let hasTitle: Bool = hasIDTagTitle || hasVLCTitle
+                let hasAlbum: Bool = hasIDTagAlbum || hasVLCAlbum
                 
                 for str in otherIDInfos {
                     if line.range(of: str, options: [.caseInsensitive], range: nil, locale: nil) != nil {

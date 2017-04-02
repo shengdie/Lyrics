@@ -317,7 +317,7 @@ class AppPrefsWindowController: DBPrefsWindowController, NSWindowDelegate, Conte
         copyLrcToPbShortcut.associatedUserDefaultsKey = ShortcutCopyLrcToPb
         editLrcShortcut.associatedUserDefaultsKey = ShortcutEditLrc
         makeLrcShortcut.associatedUserDefaultsKey = ShortcutMakeLrc
-        writeLrcToiTunesShortcut.associatedUserDefaultsKey = ShortcutWriteLrcToiTunes
+        //writeLrcToiTunesShortcut.associatedUserDefaultsKey = ShortcutWriteLrcToiTunes
     }
     
     fileprivate func endRecordShortcut() {
